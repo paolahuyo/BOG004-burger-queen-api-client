@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/paolahuyo/BOG004-burger-queen-api-client/issues"
   },
-  "homepage": "https://github.com/paolahuyo/BOG004-burger-queen-api-client#readme"
+  "homepage": "https://github.com/paolahuyo/BOG004-burger-queen-api-client#readme",
+  "dependencies": {
+    "react-router-dom": "^6.3.0"
+  }
 }
