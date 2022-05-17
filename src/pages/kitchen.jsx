@@ -6,7 +6,7 @@ export default function Kitchen() {
     <div className="container">
       <h1>Página de cocina</h1>
       <p>
-        <Link to="/">login</Link>
+        <Link to="/">Home</Link>
       </p>
     </div>
   );
