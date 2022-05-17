@@ -1,73 +1,67 @@
-import{ useRef,useState,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import{ useState } from 'react';
+import { login, saveUser } from "../api/api.js";
+import { useNavigate } from 'react-router-dom';
 
-const Login=()=>{
-
-    const userRef=useRef();
-    const errRef=useRef();
-
-    // states
-    const[user,setUser]=useState('');
-    const[pwd,setPwd]=useState('');
-    const[errMsg,setErrMsg]=useState('');
-    const[success,setSuccess]=useState(false);
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
-    
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd])
+function Login (){
+    const navigate = useNavigate();
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+    });
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(user,pwd);
-        setUser('');
-        setPwd('');
-        setSuccess(true);
+        try{
+            const response = await login(values);
+            saveUser(response.data);
+            navigate("/waiter");
+        } catch(err) {
+            if(!err?.response){
+                console.log("No hay respues del server")
+            }else if(err.response?.status === 400){
+                console.log("El usuario o contraseña son erroneos")
+            }else if(err.response?.status === 401){
+                console.log("Sin autorizacion")
+            }else{
+                console.log("Fallo al ingresar")
+            }
+        } 
+        // navigate('/order'); 
     }
 
-    return(
-        <>
-        {success ? (
-            <section>
-                <h1>You are logged in!</h1>
-                <br />
-                <p>
-                    <Link to="/">Go to Home</Link>
-                </p>
-            </section>
-        ) : (
-        <section>
-            <p ref={errRef}className={errMsg?"errmsg":
-            "offscreen"}aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e)=>setUser(e.target.value)}
-                value={user}
+    const handleChange = (e) => {
+        const { target } = e;
+        const { name, value } = target;
+        const newValues = {
+          ...values,
+          [name]: value,
+        };
+        setValues(newValues);
+      }
+
+    return (
+       <form onSubmit={handleSubmit}>
+           <label htmlFor="email">Email:</label>
+           <input type="email"
+                name='email'
+                placeholder='User'
+                className='email'
+                value={values.email}
                 required
+                onChange={handleChange}
             />
-            <label htmlFor="password">password:</label>
+            <label htmlFor="pws">Contraseña:</label>
             <input
                 type="password"
-                id="password"
-                ref={userRef}
-                onChange={(e)=>setPwd(e.target.value)}
-                value={pwd}
+                name="password"
+                placeholder="Contraseña"
+                className="password"
+                value={values.password}
                 required
+                onChange={handleChange}
             />
-            <button>Sign In</button>
-        </form>
-        </section>
-        )}
-        </>
+        <button type="submit" className="btn-login">Iniciar Sesion</button>
+       </form>
     )
 }
         
