@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <h1>Página de inicio</h1>
+      <h1>Burger Queen</h1>
       <Login />
       {/* <ol>
         <li><Link to="/menu">menu</Link></li>
