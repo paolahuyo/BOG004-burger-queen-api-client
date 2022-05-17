@@ -26,15 +26,12 @@ function Login (){
                 console.log("Fallo al ingresar")
             }
         } 
-        // navigate('/order'); 
     }
 
     const handleChange = (e) => {
-        const { target } = e;
-        const { name, value } = target;
         const newValues = {
           ...values,
-          [name]: value,
+          [e.target.name]: e.target.value,
         };
         setValues(newValues);
       }
