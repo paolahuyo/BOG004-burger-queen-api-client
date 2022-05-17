@@ -11,4 +11,8 @@ export default function Login() {
         <li><Link to="/menu">menu</Link></li>
         <li><Link to="/admin">admin</Link></li>
         <li><Link to="/kitchen">cocina</Link></li>
-        <li><Link to="/orders">ordenes</Link><
+        <li><Link to="/orders">ordenes</Link></li>
+      </ol>
+    </div>
+  );
+}
