@@ -1,0 +1,17 @@
+.WaiterLink {
+    font-family: 'Poppins',sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    color: #61dafb;
+  }
+
+.Waiterh1{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    place-self: center;
+  }
