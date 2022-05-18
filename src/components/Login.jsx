@@ -57,8 +57,6 @@ function Login (){
     }
 
     const handleChange = (e) => {
-        // const { target } = e;
-        // const { name, value } = target;
         const newValues = {
           ...values,
           [e.target.name]: e.target.value,
