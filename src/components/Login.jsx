@@ -76,7 +76,7 @@ function Login (){
                     required
                     onChange={handleChange}
                 />
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive">{errMsg}</p>
             <button type="submit" className={styles.LoginButton}>Log In</button>
         </form>
     )
