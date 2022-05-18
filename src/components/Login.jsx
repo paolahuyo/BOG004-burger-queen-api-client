@@ -13,17 +13,17 @@ function Login (){
     const [email] = useState('');
     const [password] = useState('');
 
-    const [users, setUser] = React.useState(null);
+    // const [users, setUser] = React.useState(null);
 
-    const handleLogin = () =>
-        setUser({
-            "email": "grace.hopper@systers.xyz",
-            "password": "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
-            "roles": {
-                "admin": true
-                },
-            "id": 2
-        });
+    // const handleLogin = () =>
+    //     setUser({
+    //         "email": "grace.hopper@systers.xyz",
+    //         "password": "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
+    //         "roles": {
+    //             "admin": true
+    //             },
+    //         "id": 2
+    //     });
 
         
     // const handleLogout = () => setUser(null);
@@ -44,7 +44,7 @@ function Login (){
         try{
             const response = await login(values);
             saveUser(response.data);
-            navigate("/waiter");
+            console.log(response.data);
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")
@@ -92,8 +92,8 @@ function Login (){
                     required
                     onChange={handleChange}
                 />
-            <p ref={errRef} className={        errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <button type="submit" className={styles.LoginButton} onClick={handleLogin}>Log In</button>
+            <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive">{errMsg}</p>
+            <button type="submit" className={styles.LoginButton}>Log In</button>
         </form>
     )
 }

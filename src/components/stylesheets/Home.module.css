@@ -50,8 +50,9 @@
     text-align: center;
 }
 
-.errMsg{
-  color: #efef73;
+.LoginFormEr{
+  color: #FFCF6E;
+  font-size: 18px;
 }
 
 .LoginLabel{

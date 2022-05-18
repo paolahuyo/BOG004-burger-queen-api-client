@@ -5,7 +5,7 @@ const ProtectedRoute = ({
     redirectPath = '/',
     children,
   }) => {
-    if (!users) {
+    if (users) {
       return <Navigate to={redirectPath} replace />;
     }
   

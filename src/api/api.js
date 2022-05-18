@@ -17,12 +17,12 @@ const saveUser = (user) => {
     sessionStorage.setItem('user', JSON.stringify(user));
 }
 
- const getUserData = () => {
+ const getLoggedUser = () => {
      return JSON.parse(sessionStorage.getItem('user'));
  }
 
  const getToken = () => {
-     return getUserData().accessToken;
+     return getLoggedUser().accessToken;
  }
  
 export {
@@ -30,6 +30,6 @@ export {
     getUsers,
     saveUser,
     createUser,
-    getUserData,
+    getLoggedUser,
     getToken
 }

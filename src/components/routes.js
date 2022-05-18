@@ -8,35 +8,42 @@ import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
 import Orders from "../pages/Orders";
+import {getLoggedUser} from "../api/api";
 
 const router = () => {
+
+  const user = getLoggedUser();
+  console.log(user);
+  // const [user, setUser] = useState({})
+  // useEffect(()=> {
+  //   setUser(getLoggedUser());
+  // }, [getLoggedUser()]) 
+
   return (
     <Router>
         <Routes>
           <Route 
             path='/' 
-            element={<ProtectedRoute isAllowed={!!users}>
-              <Home />
-            </ProtectedRoute>}
+            element={<Home />}
           />
           <Route 
             path='/admin' 
             element={
-            <ProtectedRoute isAllowed={!!users && users.roles.includes('admin')}>
+            <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.admin}>
               <Admin/>
             </ProtectedRoute>}
           />
           <Route 
             path='/waiter' 
             element={
-              <ProtectedRoute isAllowed={!!users && users.roles.includes('waiter')}>
+              <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.waiter}>
                 <Waiter />
               </ProtectedRoute>}
           /> 
           <Route 
           path='/kitchen'
           element={
-            <ProtectedRoute isAllowed={!!users && users.roles.includes('chef')}>
+            <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.chef}>
               <Kitchen />
             </ProtectedRoute>} 
           />
