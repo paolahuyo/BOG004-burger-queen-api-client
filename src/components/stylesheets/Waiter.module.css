@@ -1,11 +1,21 @@
-.WaiterLink {
+.Waiter {
+    min-height: 100vh;
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+.Link {
     font-family: 'Poppins',sans-serif;
     font-size: 30px;
     letter-spacing: 0.5px;
     color: #61dafb;
   }
 
-.Waiterh1{
+.h1{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;

@@ -1,7 +1,7 @@
 import{ useState } from 'react';
 import { login, saveUser } from "../api/api.js";
 import { useNavigate } from 'react-router-dom';
-import styles from './stylesheets/Login.module.css';
+import styles from './stylesheets/Home.module.css';
 
 
 function Login (){
@@ -42,7 +42,6 @@ function Login (){
       }
 
     return (
-        <div className={styles.Login}>
         <form className={styles.LoginForm} onSubmit={handleSubmit}>
             <h3 className={styles.LoginFormh3}>User Login</h3>
             <label className={styles.LoginLabel} htmlFor="email">Email:</label>
@@ -64,8 +63,12 @@ function Login (){
                 />
             <button className={styles.LoginButton} type="submit">Log In</button>
         </form>
-       </div>
     )
 }
         
 export default Login;
+
+// {
+//   "email": "grace.hopper@systers.xyz",
+//   "password": "123456"
+// }
