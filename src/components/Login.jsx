@@ -1,4 +1,4 @@
-import{ useState } from 'react';
+import{ useState, useEffect, useRef } from 'react';
 import { login, saveUser } from "../api/api.js";
 import { useNavigate } from 'react-router-dom';
 import styles from './stylesheets/Home.module.css';
@@ -6,10 +6,22 @@ import styles from './stylesheets/Home.module.css';
 
 function Login (){
     const navigate = useNavigate();
+    const errRef = useRef();
+    const userRef = useRef();
+
+    const [email] = useState('');
+    const [password] = useState('');
+
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
+
+    const [errMsg, setErrMsg] = useState('');
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, password])
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -19,14 +31,15 @@ function Login (){
             navigate("/waiter");
         } catch(err) {
             if(!err?.response){
-                console.log("No hay respues del server")
+                setErrMsg("No hay respuesta del server")
             }else if(err.response?.status === 400){
-                console.log("El usuario o contraseña son erroneos")
+                setErrMsg("El usuario o contraseña son erroneos")
             }else if(err.response?.status === 401){
-                console.log("Sin autorizacion")
+                setErrMsg("Sin autorizacion")
             }else{
-                console.log("Fallo al ingresar")
+                setErrMsg("Fallo al ingresar")
             }
+            errRef.current.focus();
         } 
     }
 
@@ -49,16 +62,19 @@ function Login (){
                     required
                     onChange={handleChange}
                 />
-            <label className={styles.LoginLabel} htmlFor="pws">Password:</label>
-            <input className={styles.LoginInput}
+                <label htmlFor="pws">Contraseña:</label>
+                <input
                     type="password"
+                    id="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
+                    className="password"
                     value={values.password}
                     required
                     onChange={handleChange}
                 />
-            <button className={styles.LoginButton} type="submit">Log In</button>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <button type="submit" className="btn-login">Iniciar Sesion</button>
         </form>
     )
 }
