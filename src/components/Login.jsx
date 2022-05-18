@@ -1,6 +1,8 @@
 import{ useState } from 'react';
 import { login, saveUser } from "../api/api.js";
 import { useNavigate } from 'react-router-dom';
+import styles from './stylesheets/Login.module.css';
+
 
 function Login (){
     const navigate = useNavigate();
@@ -40,28 +42,29 @@ function Login (){
       }
 
     return (
-       <form onSubmit={handleSubmit}>
-           <label htmlFor="email">Email:</label>
-           <input type="email"
-                name='email'
-                placeholder='User'
-                className='email'
-                value={values.email}
-                required
-                onChange={handleChange}
-            />
-            <label htmlFor="pws">Contraseña:</label>
-            <input
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                className="password"
-                value={values.password}
-                required
-                onChange={handleChange}
-            />
-        <button type="submit" className="btn-login">Iniciar Sesion</button>
-       </form>
+        <div className={styles.Login}>
+        <form className={styles.LoginForm} onSubmit={handleSubmit}>
+            <h3 className={styles.LoginFormh3}>User Login</h3>
+            <label className={styles.LoginLabel} htmlFor="email">Email:</label>
+            <input className={styles.LoginInput} type="email"
+                    name='email'
+                    placeholder='Email'
+                    value={values.email}
+                    required
+                    onChange={handleChange}
+                />
+            <label className={styles.LoginLabel} htmlFor="pws">Password:</label>
+            <input className={styles.LoginInput}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={values.password}
+                    required
+                    onChange={handleChange}
+                />
+            <button className={styles.LoginButton} type="submit">Log In</button>
+        </form>
+       </div>
     )
 }
         

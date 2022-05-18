@@ -15,10 +15,11 @@ const router = () => {
     <Router>
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/admin' element={<Admin/>} />
           <Route path='/waiter' element={<Waiter/>} />
           <Route path='/kitchen' element={<Kitchen/>} />
           <Route path='/orders' element={<Orders/>} />
-          <Route path='/Admin' element={<Admin/>} />
+         
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
