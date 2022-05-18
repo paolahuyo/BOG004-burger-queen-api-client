@@ -25,3 +25,9 @@
     text-align: center;
     place-self: center;
   }
+
+.Logo {
+    width: 300px;
+    pointer-events: none;
+    justify-self: center;
+}
