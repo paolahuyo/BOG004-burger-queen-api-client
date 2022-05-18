@@ -12,7 +12,17 @@
     width: 400px;
     pointer-events: none;
     justify-self: center;
-  }
+}
+
+.h1{
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    place-self: center;
+}
 
 .LoginForm{
     height: 520px;
@@ -32,7 +42,8 @@
     outline: none;
     border: none;
 }
-.LoginFormh3{
+
+.h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
@@ -72,7 +83,7 @@
 }
   @media (prefers-reduced-motion: no-preference) {
     .HomeLogo {
-      animation: Home-logo-spin infinite 30s linear;
+      animation: Home-logo-spin infinite 36s linear;
     }
   }
   
@@ -84,12 +95,4 @@
       transform: rotate(360deg);
     }
   }
-  .h1{
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-    place-self: center;
-  }
+  
