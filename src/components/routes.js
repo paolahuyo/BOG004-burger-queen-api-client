@@ -12,15 +12,15 @@ import { getLoggedUser } from "../api/api";
 
 const router = () => {
 
-  const dataUser = getLoggedUser();
+  // const dataUser = getLoggedUser();
 
   return (
     <Router>
         <Routes>
-          <Route 
+          {/* <Route 
             path='/' 
             element={<Home />}
-          />
+          /> */}
           {/* <Route 
             path='/' 
             element={
