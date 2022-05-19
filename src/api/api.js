@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:8080/';
 const createUser = (user) => {
     return axios.post(BASE_URL+'users', user);
 }
- 
+
 const login = (payload) => {
     return axios.post(BASE_URL+'login', payload);
 }
@@ -17,14 +17,14 @@ const saveUser = (user) => {
     sessionStorage.setItem('user', JSON.stringify(user));
 }
 
- const getLoggedUser = () => {
-     return JSON.parse(sessionStorage.getItem('user'));
- }
+const getLoggedUser = () => {
+    return JSON.parse(sessionStorage.getItem('user'));
+}
 
- const getToken = () => {
-     return getLoggedUser().accessToken;
- }
- 
+const getToken = () => {
+    return getLoggedUser().accessToken;
+}
+
 export {
     login,
     getUsers,

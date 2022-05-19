@@ -1,22 +1,19 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { login, saveUser } from "../api/api.js";
 import { useNavigate } from 'react-router-dom';
 import styles from './stylesheets/Home.module.css';
 
-function Login (){
+function Login () {
     const navigate = useNavigate();
     const errRef = useRef();
     const userRef = useRef();
-
     const [email] = useState('');
     const [password] = useState('');
-
+    // const [user, setUser] = useState(null);
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
-
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -53,18 +50,18 @@ function Login (){
             }else{
                 setErrMsg("Fallo al ingresar")
             }
-            errRef.current.focus();
-        } 
+            //// errRef.current.focus();
+        }
     }
 
     const handleChange = (e) => {
         const newValues = {
-          ...values,
-          [e.target.name]: e.target.value,
+        ...values,
+        [e.target.name]: e.target.value,
         };
         setValues(newValues);
-      }
-   
+    }
+
     return (
         <form className={styles.LoginForm} onSubmit={handleLogin}>
             <h3 className={styles.h3}>User Login</h3>
@@ -77,6 +74,7 @@ function Login (){
                     value={values.email}
                     required
                     onChange={handleChange}
+                    data-testid="login-email-input"
                 />
             <label className={styles.LoginLabel} htmlFor="pws">Password:</label>
             <input className={styles.LoginInput}
@@ -88,12 +86,12 @@ function Login (){
                     required
                     onChange={handleChange}
                 />
-            <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive">{errMsg}</p>
+            {errMsg && <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{errMsg}</p>}
             <button type="submit" className={styles.LoginButton}>Log In</button>
         </form>
     )
 }
-        
+
 export default Login;
 
 // {
@@ -105,5 +103,5 @@ export default Login;
 
 
 
-        
+
     // const handleLogout = () => setUser(null);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Routes from './components/routes.js';
+import Routes from './components/Routes.jsx';
 import styles from './components/stylesheets/App.module.css';
 // import logo from './assets/logo-burger-queen.png';
 // import NavBar from './components/NavBar.jsx';
