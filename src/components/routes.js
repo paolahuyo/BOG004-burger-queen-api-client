@@ -21,7 +21,7 @@ const router = () => {
             path='/' 
             element={<Home />}
           />
-          <Route 
+          {/* <Route 
             path='/' 
             element={
             <ProtectedRoutes redirectPath="/admin" isAllowed={dataUser && dataUser.user.roles.admin}>
@@ -40,9 +40,15 @@ const router = () => {
           element={
             <ProtectedRoutes redirectPath="/kitchen" isAllowed={dataUser && dataUser.user.roles.chef}>
               <Kitchen />
-            </ProtectedRoutes>} 
-          />
-          <Route path='/orders' element={<Orders/>}/> 
+            </ProtectedRoutes>}
+          />  */}
+
+          <Route path='/' element={<Home/>}/>
+          <Route path='/admin' element={<Admin/>} />+
+          <Route path='/waiter' element={<Waiter/>} />
+          <Route path='/kitchen' element={<Kitchen/>} />
+          <Route path='/orders' element={<Orders/>} />
+         
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
