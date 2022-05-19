@@ -4,7 +4,6 @@ import { login, saveUser } from "../api/api.js";
 import { useNavigate } from 'react-router-dom';
 import styles from './stylesheets/Home.module.css';
 
-
 function Login (){
     const navigate = useNavigate();
     const errRef = useRef();
@@ -12,7 +11,6 @@ function Login (){
 
     const [email] = useState('');
     const [password] = useState('');
-    const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
         email: "",
@@ -29,19 +27,22 @@ function Login (){
         e.preventDefault();
         try{
             const response = await login(values);
-            const { user } = response.data;
+            const {user} = response.data;
             saveUser(response.data);
+            console.log(user);
             if (user.roles.waiter) {
                 navigate('/waiter', {
-                    replace: true
+                replace: true
                 });
-                } else if (user.roles.chef) {
-                    navigate('/kitchen', {
-                    replace: true
-                    });
-                    } else if (user.roles.admin) {
-                        navigate('/admin', {
-                          replace: true})}
+            } else if (user.roles.chef) {
+                navigate('/kitchen', {
+                replace: true
+                });
+            } else if (user.roles.admin) {
+                console.log("hola entra")
+                navigate('/admin', {
+                replace: true})
+            }
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")
@@ -57,17 +58,13 @@ function Login (){
     }
 
     const handleChange = (e) => {
-        // const { target } = e;
-        // const { name, value } = target;
         const newValues = {
           ...values,
           [e.target.name]: e.target.value,
         };
         setValues(newValues);
       }
-
-     
-
+   
     return (
         <form className={styles.LoginForm} onSubmit={handleLogin}>
             <h3 className={styles.h3}>User Login</h3>
