@@ -34,7 +34,6 @@ function Login (){
                 navigate('/waiter', {
                 replace: true
                 });
-<<<<<<< HEAD
             } else if (user.roles.chef) {
                 navigate('/kitchen', {
                 replace: true
@@ -44,15 +43,6 @@ function Login (){
                 navigate('/admin', {
                 replace: true})
             }
-=======
-                } else if (user.roles.chef) {
-                    navigate('/kitchen', {
-                    replace: true
-                    });
-                } else if (user.roles.admin) {
-                    navigate('/admin', {
-                    replace: true})}
->>>>>>> d51dd7ab (Creando funcion de ruteado)
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")
