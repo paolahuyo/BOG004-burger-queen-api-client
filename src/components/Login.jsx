@@ -7,7 +7,6 @@ import styles from './stylesheets/Home.module.css';
 function Login (){
     const navigate = useNavigate();
     const errRef = useRef();
-    const userRef = useRef();
 
     const [email] = useState('');
     const [password] = useState('');
@@ -27,6 +26,7 @@ function Login (){
         e.preventDefault();
         try{
             const response = await login(values);
+<<<<<<< HEAD
             const {user} = response.data;
             saveUser(response.data);
             console.log(user);
@@ -44,12 +44,30 @@ function Login (){
                 replace: true})
             }
         } catch(err) {
+=======
+            const { user } = response.data;
+            saveUser(response.data);
+                if (user.roles.waiter) {
+                    navigate('/waiter', {
+                      replace: true
+                    });
+                  } else if (user.roles.chef) {
+                    navigate('/kitchen', {
+                      replace: true
+                    });
+                  }
+                  else if (user.roles.admin) {
+                    navigate('/admin', {
+                      replace: true})}
+        }
+        catch(err) {
+>>>>>>> 79a71d55 (Creando funcion de ruteado)
             if(!err?.response){
-                setErrMsg("No hay respuesta del server")
+                setErrMsg("There is no response from the server")
             }else if(err.response?.status === 400){
-                setErrMsg("El usuario o contraseña son erroneos")
+                setErrMsg("The email or password is wrong")
             }else if(err.response?.status === 401){
-                setErrMsg("Sin autorizacion")
+                setErrMsg("Without authorization")
             }else{
                 setErrMsg("Fallo al ingresar")
             }
@@ -81,15 +99,20 @@ function Login (){
             <label className={styles.LoginLabel} htmlFor="pws">Password:</label>
             <input className={styles.LoginInput}
                     type="password"
-                    id="password"
                     name="password"
                     placeholder="Password"
                     value={values.password}
                     required
                     onChange={handleChange}
+<<<<<<< HEAD
                 />
             <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive">{errMsg}</p>
             <button type="submit" className={styles.LoginButton}>Log In</button>
+=======
+            />
+            <p ref={errRef} className= { styles.p } aria-live="assertive">{errMsg}</p>
+            <button className={styles.LoginButton} type="submit">Log In</button>
+>>>>>>> 79a71d55 (Creando funcion de ruteado)
         </form>
     )
 }
@@ -97,7 +120,7 @@ function Login (){
 export default Login;
 
 // {
-//   "email": "grace.hopper@systers.xyz",
+//   "email": "grace.hopper@burguers.com",
 //   "password": "123456"
 // }
 

@@ -9,7 +9,10 @@ export default function Home() {
   return (
     <div className={styles.Home}>
       <img src={logo} className={styles.HomeLogo} alt="logo" />
+<<<<<<< HEAD
       <h1 className={styles.h1}>Home</h1>
+=======
+>>>>>>> 79a71d55 (Creando funcion de ruteado)
       <Login />
     </div>
   )

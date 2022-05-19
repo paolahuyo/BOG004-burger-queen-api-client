@@ -17,6 +17,7 @@ const router = () => {
   return (
     <Router>
         <Routes>
+<<<<<<< HEAD
           <Route path='/' element={<Home />}
           />
           { dataUser && dataUser.user.roles.admin  
@@ -32,6 +33,14 @@ const router = () => {
             : null
           }
           <Route path='/orders' element={<Orders/>}/> 
+=======
+          <Route path='/' element={<Home/>}/>
+          <Route path='/admin' element={<Admin/>} />+
+          <Route path='/waiter' element={<Waiter/>} />
+          <Route path='/kitchen' element={<Kitchen/>} />
+          <Route path='/orders' element={<Orders/>} />
+         
+>>>>>>> 79a71d55 (Creando funcion de ruteado)
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
