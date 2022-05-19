@@ -45,6 +45,7 @@ function Login (){
             const response = await login(values);
             saveUser(response.data);
             console.log(response.data);
+            // navigate('/waiter');
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")

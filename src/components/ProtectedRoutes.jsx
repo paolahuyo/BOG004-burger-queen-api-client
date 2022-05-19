@@ -1,15 +1,15 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-const ProtectedRoute = ({
-    users,
+const ProtectedRoutes = ({
+    user,
     redirectPath = '/',
     children,
   }) => {
-    if (users) {
+    if (!user) {
       return <Navigate to={redirectPath} replace />;
     }
   
     return children ? children : <Outlet />;
   };
 
-export default ProtectedRoute
+export default ProtectedRoutes

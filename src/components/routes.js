@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProtectedRoute from '../components/ProtectedRoutes';
+import ProtectedRoutes from '../components/ProtectedRoutes';
 
 import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
@@ -8,7 +8,7 @@ import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
 import Orders from "../pages/Orders";
-import {getLoggedUser} from "../api/api";
+import { getLoggedUser } from "../api/api";
 
 const router = () => {
 
@@ -27,25 +27,25 @@ const router = () => {
             element={<Home />}
           />
           <Route 
-            path='/admin' 
+            path='admin' 
             element={
-            <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.admin}>
+            <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.admin}>
               <Admin/>
-            </ProtectedRoute>}
+            </ProtectedRoutes>}
           />
           <Route 
-            path='/waiter' 
+            path='waiter' 
             element={
-              <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.waiter}>
+              <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.waiter}>
                 <Waiter />
-              </ProtectedRoute>}
+              </ProtectedRoutes>}
           /> 
           <Route 
           path='/kitchen'
           element={
-            <ProtectedRoute redirectPath="/" isAllowed={user && user.user.roles.chef}>
+            <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.chef}>
               <Kitchen />
-            </ProtectedRoute>} 
+            </ProtectedRoutes>} 
           />
           <Route path='/orders' element={<Orders/>}/> 
           <Route element={<NotFound/>} />
