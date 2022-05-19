@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/notFound";
 import Orders from "../pages/Orders";
 
 
@@ -15,7 +15,7 @@ const router = () => {
     <Router>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/admin' element={<Admin/>} />
+          <Route path='/admin' element={<Admin/>} />+
           <Route path='/waiter' element={<Waiter/>} />
           <Route path='/kitchen' element={<Kitchen/>} />
           <Route path='/orders' element={<Orders/>} />
