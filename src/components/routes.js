@@ -12,8 +12,8 @@ import { getLoggedUser } from "../api/api";
 
 const router = () => {
 
-  const user = getLoggedUser();
-  console.log(user);
+  const dataUser = getLoggedUser();
+  console.log(dataUser);
   // const [user, setUser] = useState({})
   // useEffect(()=> {
   //   setUser(getLoggedUser());
@@ -27,23 +27,23 @@ const router = () => {
             element={<Home />}
           />
           <Route 
-            path='admin' 
+            path='/' 
             element={
-            <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.admin}>
+            <ProtectedRoutes redirectPath="/admin" isAllowed={dataUser && dataUser.user.roles.admin}>
               <Admin/>
             </ProtectedRoutes>}
           />
           <Route 
-            path='waiter' 
+            path='/' 
             element={
-              <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.waiter}>
+              <ProtectedRoutes redirectPath="/waiter" isAllowed={dataUser && dataUser.user.roles.waiter}>
                 <Waiter />
               </ProtectedRoutes>}
           /> 
           <Route 
-          path='/kitchen'
+          path='/'
           element={
-            <ProtectedRoutes redirectPath="/" isAllowed={!!user && user.user.roles.chef}>
+            <ProtectedRoutes redirectPath="/kitchen" isAllowed={dataUser && dataUser.user.roles.chef}>
               <Kitchen />
             </ProtectedRoutes>} 
           />

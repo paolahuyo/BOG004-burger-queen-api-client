@@ -12,21 +12,7 @@ function Login (){
 
     const [email] = useState('');
     const [password] = useState('');
-
-    // const [users, setUser] = React.useState(null);
-
-    // const handleLogin = () =>
-    //     setUser({
-    //         "email": "grace.hopper@systers.xyz",
-    //         "password": "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
-    //         "roles": {
-    //             "admin": true
-    //             },
-    //         "id": 2
-    //     });
-
-        
-    // const handleLogout = () => setUser(null);
+    const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
         email: "",
@@ -39,13 +25,23 @@ function Login (){
         setErrMsg('');
     }, [email, password])
 
-    const handleSubmit = async (e) =>{
+    const handleLogin = async (e) =>{
         e.preventDefault();
         try{
             const response = await login(values);
+            const { user } = response.data;
             saveUser(response.data);
-            console.log(response.data);
-            // navigate('/waiter');
+            if (user.roles.waiter) {
+                navigate('/waiter', {
+                    replace: true
+                });
+                } else if (user.roles.chef) {
+                    navigate('/kitchen', {
+                    replace: true
+                    });
+                    } else if (user.roles.admin) {
+                        navigate('/admin', {
+                          replace: true})}
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")
@@ -70,8 +66,10 @@ function Login (){
         setValues(newValues);
       }
 
+     
+
     return (
-        <form className={styles.LoginForm} onSubmit={handleSubmit}>
+        <form className={styles.LoginForm} onSubmit={handleLogin}>
             <h3 className={styles.h3}>User Login</h3>
             <label className={styles.LoginLabel} htmlFor="email">Email:</label>
             <input className={styles.LoginInput} type="email"
@@ -105,3 +103,10 @@ export default Login;
 //   "email": "grace.hopper@systers.xyz",
 //   "password": "123456"
 // }
+
+//Tutorial de login
+
+
+
+        
+    // const handleLogout = () => setUser(null);

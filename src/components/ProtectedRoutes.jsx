@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoutes = ({
-    user,
+    dataUser,
     redirectPath = '/',
     children,
   }) => {
-    if (!user) {
+    if (!dataUser) {
       return <Navigate to={redirectPath} replace />;
     }
   
