@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <div className={styles.Home}>
       <img src={logo} className={styles.HomeLogo} alt="logo" />
-      {/* <h1 className={styles.h1}>Home</h1> */}
       <Login />
     </div>
   )
