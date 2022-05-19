@@ -12,7 +12,10 @@ import { getLoggedUser } from "../api/api";
 const router = () => {
 
   const dataUser = getLoggedUser();
+<<<<<<< HEAD
   console.log(dataUser);
+=======
+>>>>>>> ce4621a4 (haciendo pull)
 
   return (
     <Router>
