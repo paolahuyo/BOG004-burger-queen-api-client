@@ -55,13 +55,12 @@ function Login () {
         };
         setValues(newValues);
     }
-
+    
     return (
         <form className={styles.LoginForm} onSubmit={handleLogin}>
             <h3 className={styles.h3}>User Login</h3>
             <label className={styles.LoginLabel} htmlFor="email">Email:</label>
             <input className={styles.LoginInput} type="email"
-                    ref={userRef}
                     id="email"
                     name='email'
                     placeholder='Email'
@@ -91,10 +90,3 @@ export default Login;
 //   "email": "grace.hopper@burguers.com",
 //   "password": "123456"
 // }
-
-//Tutorial de login
-
-
-
-
-    // const handleLogout = () => setUser(null);
