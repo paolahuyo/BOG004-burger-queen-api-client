@@ -13,11 +13,6 @@ import { getLoggedUser } from "../api/api";
 const router = () => {
 
   const dataUser = getLoggedUser();
-  console.log(dataUser);
-  // const [user, setUser] = useState({})
-  // useEffect(()=> {
-  //   setUser(getLoggedUser());
-  // }, [getLoggedUser()]) 
 
   return (
     <Router>
