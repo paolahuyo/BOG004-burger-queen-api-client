@@ -27,14 +27,15 @@ function Login () {
             const { user } = response.data;
             saveUser(response.data);
             console.log(user);
-            if (user.roles.waiter) {
-                navigate('/waiter');
-            } else if (user.roles.chef) {
-                navigate('/kitchen');
-            } else if (user.roles.admin) {
-                console.log("hola entra")
-                navigate('/admin')
-            }
+                console.log("Holis")
+                if (user.roles.waiter) {
+                    navigate('/waiter');
+                } else if (user.roles.chef) {
+                    navigate('/kitchen');
+                } else if (user.roles.admin) {
+                    navigate('/admin')
+                }
+
         } catch(err) {
             if(!err?.response){
                 setErrMsg("There is no response from the server")
