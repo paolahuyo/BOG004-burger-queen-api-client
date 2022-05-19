@@ -6,7 +6,7 @@ import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/notFound";
 import Orders from "../pages/Orders";
 import { getLoggedUser } from "../api/api";
 

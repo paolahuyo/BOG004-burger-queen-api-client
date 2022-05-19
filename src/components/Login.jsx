@@ -12,7 +12,6 @@ function Login (){
 
     const [email] = useState('');
     const [password] = useState('');
-    const [user, setUser] = useState(null);
 
     const [values, setValues] = useState({
         email: "",
@@ -39,9 +38,9 @@ function Login (){
                     navigate('/kitchen', {
                     replace: true
                     });
-                    } else if (user.roles.admin) {
-                        navigate('/admin', {
-                          replace: true})}
+                } else if (user.roles.admin) {
+                    navigate('/admin', {
+                    replace: true})}
         } catch(err) {
             if(!err?.response){
                 setErrMsg("No hay respuesta del server")
