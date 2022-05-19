@@ -6,10 +6,6 @@ import styles from './stylesheets/Home.module.css';
 function Login () {
     const navigate = useNavigate();
     const errRef = useRef();
-<<<<<<< HEAD
-=======
-
->>>>>>> 79a71d55 (Creando funcion de ruteado)
     const [email] = useState('');
     const [password] = useState('');
     // const [user, setUser] = useState(null);
@@ -30,7 +26,6 @@ function Login () {
             const response = await login(values);
             const { user } = response.data;
             saveUser(response.data);
-<<<<<<< HEAD
                 console.log("Holis")
                 if (user.roles.waiter) {
                     navigate('/waiter');
@@ -40,22 +35,6 @@ function Login () {
                     navigate('/admin')
                 }
         } catch(err) {
-=======
-                if (user.roles.waiter) {
-                    navigate('/waiter', {
-                      replace: true
-                    });
-                  } else if (user.roles.chef) {
-                    navigate('/kitchen', {
-                      replace: true
-                    });
-                  }
-                  else if (user.roles.admin) {
-                    navigate('/admin', {
-                      replace: true})}
-        }
-        catch(err) {
->>>>>>> 79a71d55 (Creando funcion de ruteado)
             if(!err?.response){
                 setErrMsg("There is no response from the server")
             }else if(err.response?.status === 400){
