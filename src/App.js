@@ -6,7 +6,7 @@ import styles from './components/stylesheets/App.module.css';
 //import { Link } from 'react-router-dom';
 
 const App = () => {
- return (
+  return (
     <div className={styles.App}>
       {/* <NavBar /> */}
       <header className={styles.AppHeader}>
@@ -25,11 +25,10 @@ const App = () => {
         </a> */}
         <Routes />
       </header>
-        
     </div>
- )
+  )
 }
-export default App;    
+export default App;
 
 // {
 //   "email": "grace.hopper@systers.xyz",

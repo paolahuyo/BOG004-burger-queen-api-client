@@ -5,6 +5,8 @@ import Login from './Login'
 import {createMemoryHistory} from 'history'
 import {Router} from 'react-router-dom'
 
+// npm test -- login.test.js
+
 it('Componente login', async () => {
     const history = createMemoryHistory()
     const { debug } = render(

@@ -16,14 +16,14 @@ const router = () => {
   // const [user, setUser] = useState({})
   // useEffect(()=> {
   //   setUser(getLoggedUser());
-  // }, [getLoggedUser()]) 
+  // }, [getLoggedUser()])
 
   return (
     <Router>
         <Routes>
           <Route path='/' element={<Home />}
           />
-          { dataUser && dataUser.user.roles.admin  
+          { dataUser && dataUser.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
           }
@@ -35,8 +35,7 @@ const router = () => {
             ? <Route path='/chef' element={<Kitchen />}/>
             : null
           }
-          
-          <Route path='/orders' element={<Orders/>}/> 
+          <Route path='/orders' element={<Orders/>}/>
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
