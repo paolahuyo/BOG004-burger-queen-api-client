@@ -6,7 +6,6 @@ import styles from './stylesheets/Home.module.css';
 function Login () {
     const navigate = useNavigate();
     const errRef = useRef();
-    const userRef = useRef();
     const [email] = useState('');
     const [password] = useState('');
     // const [user, setUser] = useState(null);
@@ -37,11 +36,11 @@ function Login () {
             }
         } catch(err) {
             if(!err?.response){
-                setErrMsg("No hay respuesta del server")
+                setErrMsg("There is no response from the server")
             }else if(err.response?.status === 400){
-                setErrMsg("El usuario o contraseña son erroneos")
+                setErrMsg("The email or password is wrong")
             }else if(err.response?.status === 401){
-                setErrMsg("Sin autorizacion")
+                setErrMsg("Without authorization")
             }else{
                 setErrMsg("Fallo al ingresar")
             }
@@ -74,7 +73,6 @@ function Login () {
             <label className={styles.LoginLabel} htmlFor="pws">Password:</label>
             <input className={styles.LoginInput}
                     type="password"
-                    id="password"
                     name="password"
                     placeholder="Password"
                     value={values.password}
@@ -90,7 +88,7 @@ function Login () {
 export default Login;
 
 // {
-//   "email": "grace.hopper@systers.xyz",
+//   "email": "grace.hopper@burguers.com",
 //   "password": "123456"
 // }
 
