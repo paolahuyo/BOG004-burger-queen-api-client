@@ -11,12 +11,6 @@ export default function Home() {
       <img src={logo} className={styles.HomeLogo} alt="logo" />
       {/* <h1 className={styles.h1}>Home</h1> */}
       <Login />
-      {/* <ol>
-        <li><Link to="/menu">menu</Link></li>
-        <li><Link to="/admin">admin</Link></li>
-        <li><Link to="/kitchen">cocina</Link></li>
-        <li><Link to="/orders">ordenes</Link></li>
-      </ol> */}
     </div>
   )
 }
