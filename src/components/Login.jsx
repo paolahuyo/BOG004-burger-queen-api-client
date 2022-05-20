@@ -16,14 +16,15 @@ function Login () {
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
+        sessionStorage.clear();
         setErrMsg('');
     }, [email, password])
 
-    const handleLogin = async (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
             const response = await login(values);
-            const {user} = response.data;
+            const { user } = response.data;
             saveUser(response.data);
             console.log(user);
             if (user.roles.waiter) {
@@ -54,10 +55,10 @@ function Login () {
         [e.target.name]: e.target.value,
         };
         setValues(newValues);
-    }
-    
+      }
+   
     return (
-        <form className={styles.LoginForm} onSubmit={handleLogin}>
+        <form className={styles.LoginForm} onSubmit={handleSubmit}>
             <h3 className={styles.h3}>User Login</h3>
             <label className={styles.LoginLabel} htmlFor="email">Email:</label>
             <input className={styles.LoginInput} type="email"
