@@ -6,13 +6,15 @@ import styles from './stylesheets/Home.module.css';
 function Login () {
     const navigate = useNavigate();
     const errRef = useRef();
+
     const [email] = useState('');
     const [password] = useState('');
-    // const [user, setUser] = useState(null);
+
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
+
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -46,7 +48,6 @@ function Login () {
             }else{
                 setErrMsg("Fallo al ingresar")
             }
-            //// errRef.current.focus();
         }
     }
 
