@@ -12,25 +12,30 @@ import { getLoggedUser } from "../api/api";
 const router = () => {
 
   const dataUser = getLoggedUser();
-  console.log(dataUser);
+  //const token = getToken();
+
+ console.log(dataUser?.user);
 
   return (
     <Router>
         <Routes>
           <Route path='/' element={<Home />}
           />
-          { dataUser && dataUser.user.roles.admin
+          {/* { dataUser?.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.waiter
+          } */}
+          <Route path='/admin' element={<Admin />}/>
+          {/* { dataUser?.user.roles.waiter
             ? <Route path='/waiter' element={<Waiter />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.chef
+          } */}
+          <Route path='/waiter' element={<Waiter />}/>
+          {/* { dataUser?.user.roles.chef
             ? <Route path='/chef' element={<Kitchen />}/>
             : null
-          }
+          } */}
+          <Route path='/chef' element={<Kitchen />}/>
           <Route path='/orders' element={<Orders/>}/>
           <Route element={<NotFound/>} />
         </Routes>

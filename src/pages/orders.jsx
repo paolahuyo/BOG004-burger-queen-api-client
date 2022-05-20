@@ -1,13 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { products } from "../api/Products";
+import Product from "../components/Product";
 
-export default function Orders() {
+export default function Orders({handleAddProduct}) {
+
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    products()
+    .then((response) =>{
+      console.log(response.data);
+      setProductos(response.data)
+    })
+    .catch(() =>{});
+  }, []);
+
   return (
-    <div className="container">
-      <h1>Página de menu</h1>
-      <p>
-        <Link to="/">login</Link>
-      </p>
+    <div>
+      {productos.map((producto) => (
+        <Product key={producto.id} id={producto.id} handleAddProduct={handleAddProduct} name={producto.name} price={producto.price} image={producto.image}  />
+      ))}
     </div>
   );
 }
