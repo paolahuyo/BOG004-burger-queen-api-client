@@ -1,6 +1,7 @@
 import axios from 'axios';
 const BASE_URL = 'http://localhost:8080/';
 
+///------User api------///
 const createUser = (user) => {
     return axios.post(BASE_URL+'users', user);
 }
@@ -25,11 +26,28 @@ const getToken = () => {
     return getLoggedUser().accessToken;
 }
 
+///------Product api------///
+
+const getProducts = () => {
+    return axios.get(BASE_URL+'products');
+}
+
+const createProduct = (product) => {
+    return axios.post(BASE_URL+'products', product);
+}
+
+const saveProduct = (product) => {
+    sessionStorage.setItem('user', JSON.stringify(product));
+}
+
 export {
     login,
     getUsers,
     saveUser,
     createUser,
     getLoggedUser,
-    getToken
+    getToken,
+    getProducts,
+    createProduct,
+    saveProduct
 }

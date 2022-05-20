@@ -6,7 +6,14 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
+    color: #ffffff;
   }
+
+.Logo {
+    width: 200px;
+    pointer-events: none;
+    justify-self: center;
+}
 
 .Link {
     font-family: 'Poppins',sans-serif;
@@ -15,7 +22,7 @@
     color: #61dafb;
   }
 
-.h1{
+.h1, .p{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -26,8 +33,36 @@
     place-self: center;
   }
 
-.Logo {
-    width: 300px;
-    pointer-events: none;
-    justify-self: center;
+.Label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.Input{
+    display: block;
+    height: 60px;
+    width: 94%;
+    color: aqua;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 300;
+}
+.Button{
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+::placeholder{
+  color: #e5e5e5;
 }

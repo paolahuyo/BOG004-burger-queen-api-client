@@ -28,17 +28,12 @@ function Login () {
             saveUser(response.data);
             console.log(user);
             if (user.roles.waiter) {
-                navigate('/waiter', {
-                replace: true
-                });
+                navigate('/waiter');
             } else if (user.roles.chef) {
-                navigate('/kitchen', {
-                replace: true
-                });
+                navigate('/kitchen');
             } else if (user.roles.admin) {
                 console.log("hola entra")
-                navigate('/admin', {
-                replace: true})
+                navigate('/admin')
             }
         } catch(err) {
             if(!err?.response){

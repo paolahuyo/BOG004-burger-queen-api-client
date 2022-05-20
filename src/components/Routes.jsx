@@ -21,9 +21,11 @@ const router = () => {
   return (
     <Router>
         <Routes>
-          <Route path='/' element={<Home />}
-          />
-          { dataUser && dataUser.user.roles.admin
+          <Route path='/' element={<Home />}/>
+          <Route path='/admin' element={<Admin />}/>
+          <Route path='/waiter' element={<Waiter />}/>
+          <Route path='/kitchen' element={<Kitchen />}/>
+          {/* { dataUser && dataUser.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
           }
@@ -35,7 +37,7 @@ const router = () => {
             ? <Route path='/chef' element={<Kitchen />}/>
             : null
           }
-          <Route path='/orders' element={<Orders/>}/>
+          <Route path='/orders' element={<Orders/>}/> */}
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
