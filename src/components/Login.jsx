@@ -37,7 +37,6 @@ function Login () {
                 } else if (user.roles.admin) {
                     navigate('/admin')
                 }
-
         } catch(err) {
             if(!err?.response){
                 setErrMsg("There is no response from the server")
