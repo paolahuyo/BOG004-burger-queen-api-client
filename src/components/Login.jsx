@@ -19,49 +19,25 @@ function Login (){
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
+        sessionStorage.clear();
         setErrMsg('');
     }, [email, password])
 
-    const handleLogin = async (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
             const response = await login(values);
-<<<<<<< HEAD
-            const {user} = response.data;
-            saveUser(response.data);
-            console.log(user);
-            if (user.roles.waiter) {
-                navigate('/waiter', {
-                replace: true
-                });
-            } else if (user.roles.chef) {
-                navigate('/kitchen', {
-                replace: true
-                });
-            } else if (user.roles.admin) {
-                console.log("hola entra")
-                navigate('/admin', {
-                replace: true})
-            }
-        } catch(err) {
-=======
             const { user } = response.data;
             saveUser(response.data);
+                console.log("Holis")
                 if (user.roles.waiter) {
-                    navigate('/waiter', {
-                      replace: true
-                    });
-                  } else if (user.roles.chef) {
-                    navigate('/kitchen', {
-                      replace: true
-                    });
-                  }
-                  else if (user.roles.admin) {
-                    navigate('/admin', {
-                      replace: true})}
-        }
-        catch(err) {
->>>>>>> 79a71d55 (Creando funcion de ruteado)
+                    navigate('/waiter');
+                } else if (user.roles.chef) {
+                    navigate('/kitchen');
+                } else if (user.roles.admin) {
+                    navigate('/admin')
+                }
+        } catch(err) {
             if(!err?.response){
                 setErrMsg("There is no response from the server")
             }else if(err.response?.status === 400){
@@ -82,13 +58,9 @@ function Login (){
         };
         setValues(newValues);
       }
-<<<<<<< HEAD
    
-=======
-
->>>>>>> ce4621a4 (haciendo pull)
     return (
-        <form className={styles.LoginForm} onSubmit={handleLogin}>
+        <form className={styles.LoginForm} onSubmit={handleSubmit}>
             <h3 className={styles.h3}>User Login</h3>
             <label className={styles.LoginLabel} htmlFor="email">Email:</label>
             <input className={styles.LoginInput} type="email"
@@ -107,15 +79,9 @@ function Login (){
                     value={values.password}
                     required
                     onChange={handleChange}
-<<<<<<< HEAD
                 />
             <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive">{errMsg}</p>
             <button type="submit" className={styles.LoginButton}>Log In</button>
-=======
-            />
-            <p ref={errRef} className= { styles.p } aria-live="assertive">{errMsg}</p>
-            <button className={styles.LoginButton} type="submit">Log In</button>
->>>>>>> 79a71d55 (Creando funcion de ruteado)
         </form>
     )
 }

@@ -12,38 +12,31 @@ import { getLoggedUser } from "../api/api";
 const router = () => {
 
   const dataUser = getLoggedUser();
-<<<<<<< HEAD
-  console.log(dataUser);
-=======
->>>>>>> ce4621a4 (haciendo pull)
+  //const token = getToken();
+
+ console.log(dataUser?.user);
 
   return (
     <Router>
         <Routes>
-<<<<<<< HEAD
           <Route path='/' element={<Home />}
           />
-          { dataUser && dataUser.user.roles.admin  
+          {/* { dataUser?.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.waiter
+          } */}
+          <Route path='/admin' element={<Admin />}/>
+          {/* { dataUser?.user.roles.waiter
             ? <Route path='/waiter' element={<Waiter />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.chef
-            ? <Route path='/kitchen' element={<Kitchen />}/>
+          } */}
+          <Route path='/waiter' element={<Waiter />}/>
+          {/* { dataUser?.user.roles.chef
+            ? <Route path='/chef' element={<Kitchen />}/>
             : null
-          }
-          <Route path='/orders' element={<Orders/>}/> 
-=======
-          <Route path='/' element={<Home/>}/>
-          <Route path='/admin' element={<Admin/>} />+
-          <Route path='/waiter' element={<Waiter/>} />
-          <Route path='/kitchen' element={<Kitchen/>} />
-          <Route path='/orders' element={<Orders/>} />
-         
->>>>>>> 79a71d55 (Creando funcion de ruteado)
+          } */}
+          <Route path='/chef' element={<Kitchen />}/>
+          <Route path='/orders' element={<Orders/>}/>
           <Route element={<NotFound/>} />
         </Routes>
     </Router>
