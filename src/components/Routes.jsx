@@ -6,38 +6,34 @@ import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
-import Orders from "../pages/Orders";
 import { getLoggedUser } from "../api/api";
 
 const router = () => {
 
   const dataUser = getLoggedUser();
-  console.log(dataUser);
-  // const [user, setUser] = useState({})
-  // useEffect(()=> {
-  //   setUser(getLoggedUser());
-  // }, [getLoggedUser()])
+  //const token = getToken();
+
+console.log(dataUser?.user);
 
   return (
     <Router>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/admin' element={<Admin />}/>
-          <Route path='/waiter' element={<Waiter />}/>
-          <Route path='/kitchen' element={<Kitchen />}/>
           {/* { dataUser && dataUser.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.waiter
+          } */}
+          <Route path='/waiter' element={<Waiter />}/>
+          {/* { dataUser?.user.roles.waiter
             ? <Route path='/waiter' element={<Waiter />}/>
             : null
-          }
-          { dataUser && dataUser.user.roles.chef
+          } */}
+          <Route path='/kitchen' element={<Kitchen />}/>
+          {/* { dataUser?.user.roles.chef
             ? <Route path='/chef' element={<Kitchen />}/>
             : null
-          }
-          <Route path='/orders' element={<Orders/>}/> */}
+          } */}
           <Route element={<NotFound/>} />
         </Routes>
     </Router>

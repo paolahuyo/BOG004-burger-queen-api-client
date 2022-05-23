@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
 import logo from '../assets/logo-burger-queen.png';
+
 import Card from '../components/Card';
 
 export default function Waiter() {
