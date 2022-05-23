@@ -7,7 +7,6 @@ import Card from '../components/Card';
 export default function Waiter() {
 
   const clientRef = useRef();
-
   const [values, setValues] = useState({
       clientName: ""
   });
