@@ -6,7 +6,6 @@ import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/notFound";
-import Orders from "../pages/Orders";
 import { getLoggedUser } from "../api/api";
 
 const router = () => {
@@ -20,19 +19,17 @@ const router = () => {
     <Router>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='/admin' element={<Admin />}/>
-          <Route path='/waiter' element={<Waiter />}/>
-          <Route path='/kitchen' element={<Kitchen />}/>
+          <Route exact path='/admin' element={<Admin />}/>
           {/* { dataUser && dataUser.user.roles.admin
             ? <Route path='/admin' element={<Admin />}/>
             : null
           } */}
-          <Route path='/admin' element={<Admin />}/>
+          <Route exact path='/waiter' element={<Waiter />}/>
           {/* { dataUser?.user.roles.waiter
             ? <Route path='/waiter' element={<Waiter />}/>
             : null
           } */}
-          <Route path='/waiter' element={<Waiter />}/>
+          <Route exact path='/kitchen' element={<Kitchen />}/>
           {/* { dataUser?.user.roles.chef
             ? <Route path='/chef' element={<Kitchen />}/>
             : null

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { products } from "../api/Products";
-import Product from "../components/Product";
 
 export default function Orders({handleAddProduct}) {
 
