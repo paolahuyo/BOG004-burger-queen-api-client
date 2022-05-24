@@ -25,30 +25,30 @@ export default function Waiter() {
     return (
       <CartProvider>
         <div className={styles.Waiter}>
-          <img src={logo} className={styles.Logo} alt="logo" />
-          <div>
-            <form>
-              <label className={styles.p} htmlFor="client">Client Name: </label>
-              <input className={styles.Input} type="text"
-                ref={clientRef}
-                id="clientName"
-                name='clientName'
-                placeholder='The Client Name'
-                value={values.clientName}
-                required
-                onChange={handleClient}
-                data-testid="test-client-name"
-              />
-              <button type="submit" className={styles.Button} onClick={handleClient}>Send</button>
-            </form>
+          <div id='menu'>
+            <img src={logo} className={styles.Logo} alt="logo" />
+            <h1 className={styles.h1}>Menu</h1>
+            <Card/>
           </div>
-          {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client Name: {values.clientName}</p>}
-          <h1 className={styles.h1}>Menu</h1>
-          <Card/>
-          <p>
-            <Link className={styles.Link} to="/">Sign Out</Link>
-          </p>
-          <Cart/>
+          <div className={styles.divRight}>
+            <form id='client'>
+                <label className={styles.p} htmlFor="client">Client Name: </label>
+                <input className={styles.Input} type="text"
+                  ref={clientRef}
+                  id="clientName"
+                  name='clientName'
+                  placeholder='The Client Name'
+                  value={values.clientName}
+                  required
+                  onChange={handleClient}
+                  data-testid="test-client-name"
+                />
+                <button type="submit" className={styles.Button} onClick={handleClient}>Send</button>
+            </form>
+            {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client Name: {values.clientName}</p>}
+            <Cart/>
+            <p><Link className={styles.Link} to="/">Sign Out</Link></p>
+          </div>
         </div>
       </CartProvider>
     );

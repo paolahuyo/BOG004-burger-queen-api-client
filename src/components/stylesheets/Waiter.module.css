@@ -17,7 +17,7 @@
 
 .Link {
     font-family: 'Poppins',sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     letter-spacing: 0.5px;
     color: #61dafb;
   }
@@ -26,34 +26,43 @@
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
     place-self: center;
   }
 
+.divRight{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+}
+
+.Form{
+  display: flex;
+  margin-bottom: 50px;
+}
 .Label{
-    display: block;
     margin-top: 30px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 .Input{
-    display: block;
     height: 60px;
-    width: 94%;
+    width: 30%;
     color: aqua;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
+    margin-top: 8px 8px;
     font-size: 16px;
     font-weight: 300;
 }
 .Button{
   margin-top: 50px;
-  width: 100%;
+  width: 30%;
   background-color: #ffffff;
   color: #080710;
   padding: 15px 0;
@@ -65,4 +74,26 @@
 
 ::placeholder{
   color: #e5e5e5;
+}
+
+
+.cartContainer{
+  width: 100vh;
+  height: 50px;
+  display: grid;
+  grid-template-columns: (2, 1fr);
+  
+  .buttonCartContainer {
+    width: 30%;
+  }
+
+  .buttonCart {
+    width: 20%;
+  }
+
+  .products{
+    height: 20px;
+    width: 20px;
+  }
+
 }

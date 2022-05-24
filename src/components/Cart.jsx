@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import orderIcon from '../assets/order.png'
 import takeAwayOrder from '../assets/take-away.png'
 import CartContext from '../Context/CartContext';
+import styles from '../components/stylesheets/Waiter.module.css'
+import ItemCart from "./ItemCart";
 
 const Cart = () => {
 
@@ -20,17 +22,33 @@ const Cart = () => {
 
 
     return (
-        <div>
-            <div>
-                {!cartOpen ? (
-                    <img src={orderIcon} alt="order icon" style={{ width: 100 }} />
-                ) : (
-                    <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
-                ) }
+        <div className={styles.cartContainer}>
+            <div 
+            onClick={()=> setCartOpen(!cartOpen)}
+            className={styles.buttonCartContainer}>
+                <div className={styles.buttonCart}>
+                    {!cartOpen ? (
+                        <img src={orderIcon} alt="order icon" style={{ width: 100 }} />
+                    ) : (
+                        <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
+                    ) }
+                </div>
             </div>
-            {!cartOpen && <div>
-                <p>{productsLenght}</p>
-                </div>}
+                {!cartOpen && <div className={styles.productNumber}><p>{productsLenght}</p>
+            </div>}
+
+
+            {cartItems && cartOpen && (
+                <div>
+                    <h2>Order Cart</h2>
+                    {cartItems.length ===0 ? <p> Empty Cart</p> : (
+                        <div>{cartItems.map((item, i) => (
+                            <ItemCart key={i} item={item}/>
+                        ))}</div>
+                        )}
+                        <h2>Total: ${total} </h2>
+                </div>
+            )}
         </div>
 
     );
