@@ -1,7 +1,10 @@
+*{
+  font-family: 'Poppins',sans-serif;
+}
+
 .Home {
   min-height: 100vh;
   text-align: center;
-  font-family: 'Poppins',sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
