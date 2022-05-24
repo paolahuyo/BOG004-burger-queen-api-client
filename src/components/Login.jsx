@@ -28,8 +28,6 @@ function Login () {
             const response = await login(values);
             const { user } = response.data;
             saveUser(response.data);
-            console.log(user);
-                console.log("Holis")
                 if (user.roles.waiter) {
                     navigate('/waiter');
                 } else if (user.roles.chef) {

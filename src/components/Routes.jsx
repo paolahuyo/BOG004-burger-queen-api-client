@@ -14,6 +14,7 @@ const router = () => {
     <Router>
 
         <Routes>
+
           <Route path='/' element={<Home />}/>
 
           <Route path='/admin' element={
@@ -46,5 +47,4 @@ const PrivateRoute = ({ children, role }) => {
   console.log(authed.user.roles);
     return authed.user.roles[role] ? children : <Navigate to="/404" />
 }
-
 export default router;
