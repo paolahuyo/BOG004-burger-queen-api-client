@@ -4,6 +4,7 @@ import styles from '../components/stylesheets/Waiter.module.css';
 import logo from '../assets/logo-burger-queen.png';
 import Card from '../components/Card';
 import { CartProvider } from '../Context/CartContext';
+import Cart from '../components/Cart';
 
 export default function Waiter() {
 
@@ -45,8 +46,9 @@ export default function Waiter() {
           <h1 className={styles.h1}>Menu</h1>
           <Card/>
           <p>
-            <Link className={styles.Link} to="/">Home</Link>
+            <Link className={styles.Link} to="/">Sign Out</Link>
           </p>
+          <Cart/>
         </div>
       </CartProvider>
     );
