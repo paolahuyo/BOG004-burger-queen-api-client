@@ -1,21 +1,20 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import { getToken } from '../api/api';
 
-export const CartContext = createContext();
+/* Creamos el context, se le puede pasar un valor inicial */
+const CartContext = createContext();
 
-export const CartProvider = ({children}) => {
-    const [cartItems, setCartItems] = useState (() => {
-        try {
-            const productsLocalStorage = localStorage.getItem('cartProducts');
-            return productsLocalStorage ? JSON.parse(productsLocalStorage) : [];
-        } catch (err) {
-            return []
-        }
-    })
+export const CartProvider = ({ children }) => {
+  /* Creamos un estado para el carrito */
+  const [cartItems, setCartItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        localStorage.setItem('cartProducts', JSON.stringify(cartItems));
-        console.log(cartItems);
-    }, [cartItems]);
+  const getProducts = async () => {
+    await axios
+      .get("http://localhost:8080/products", {headers: {authorization: "Bearer " + getToken()}})
+      .then(({ data }) => setProducts(data.products));
+  };
 
     const addItemToCart = (product) => {
         const inCart = cartItems.find(
@@ -52,11 +51,14 @@ export const CartProvider = ({children}) => {
             }
     };
 
-    return (
-        <CartContext.Provider value = {{cartItems, addItemToCart, deleteItemToCart}}>
-            {children}
-        </CartContext.Provider>
-    );
+  return (
+    /* Envolvemos el children con el provider y le pasamos un objeto con las propiedades que necesitamos por value */
+    <CartContext.Provider
+      value={{ cartItems, products, addItemToCart, editItemToCart }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export default CartContext;

@@ -1,13 +1,12 @@
 import React from 'react';
 import "../components/stylesheets/Cards.css";
-import { callProducts } from '../api/Products';
-import { useEffect, useState, useContext } from "react";
-import CartContext, { CartProvider } from '../Context/CartContext';
+import CartContext from '../Context/CartContext';
+import { callProducts } from "../api/Products"
+import { useContext, useEffect, useState } from "react";
 
 function Card() {
 
 	const {addItemToCart} = useContext(CartContext)
-
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
