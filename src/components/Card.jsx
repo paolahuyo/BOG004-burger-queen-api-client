@@ -21,7 +21,7 @@ function Card() {
 
 	return (
 		<CartProvider>
-			<div>
+			<div className='all-cards'>
 				{products.map((product)=>(
 					<div className='each-card' key={product.id}>
 					<ul className='items'>
