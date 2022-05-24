@@ -8,39 +8,38 @@
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
-  
+
   .image-item img {
     width: 100px;
     height: 15vh;
     border-radius: 50%;
-   
   }
-  
+
   li {
     padding: 1%;
     color: black;
     list-style-type: none;
   }
-  
+
   .items {
     text-align: center;
     margin-top: 5%;
   }
-  
+
   .item-name {
     color: brown;
   }
-  
+
   .flavor,
   .complement li {
     padding: 0.5%;
   }
-  
+
   .add-item {
     display: flex;
     flex-direction: column;
   }
-  
+
   .add-btn {
     font-weight: bold;
     color: white;

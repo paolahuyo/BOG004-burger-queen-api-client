@@ -1,19 +1,14 @@
 import React from 'react';
 import "../components/stylesheets/Cards.css";
 import { callProducts } from '../api/Products';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import CartContext, { CartProvider } from '../Context/CartContext';
 
 function Card() {
 
+	const {addItemToCart} = useContext(CartContext)
+
 	const [products, setProducts] = useState([]);
-
-	// constante que guarda las propiedades del estado de los productos
-	// const {id} = item;
-
-	// Funcion para agregar los productos al cart
-	// const addProduct = id => {
-	// 	const item = items.filter((item) => item.id === id)
-	// }
 
 	useEffect(() => {
 		callProducts()
@@ -25,20 +20,22 @@ function Card() {
 	}, []);
 
 	return (
-		<div>
-			{products.map((product)=>(
-				<div className='each-card'>
-				<ul className='items'>
-					<div className='image-item'>
-						<img src={product.image} alt='Item'></img>
-					</div>
-					<li className='item-name'>{product.name}</li>
-					<li>Precio: ${product.price}</li>
-				</ul>
-				<button className='add-btn'>Agregar al carrito</button>
+		<CartProvider>
+			<div>
+				{products.map((product)=>(
+					<div className='each-card' key={product.id}>
+					<ul className='items'>
+						<div className='image-item'>
+							<img src={product.image} alt='Item'></img>
+						</div>
+						<li className='item-name'>{product.name}</li>
+						<li>Precio: ${product.price}</li>
+					</ul>
+					<button className='add-btn' onClick={() => addItemToCart(product)}>Add To Cart</button>
+				</div>
+				))}
 			</div>
-			))}
-		</div>
+		</CartProvider>
 	);
 }
 
