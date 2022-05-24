@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
 import logo from '../assets/logo-burger-queen.png';
 
-import Card from '../components/Card';
+import Cards from '../components/Card';
 
 export default function Waiter() {
 
@@ -42,7 +42,7 @@ export default function Waiter() {
         </div>
         {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">{values.clientName}</p>}
         <h1 className={styles.h1}>Menu & Orders</h1>
-        <Card/>
+        <Cards/>
         <p>
           <Link className={styles.Link} to="/">Home</Link>
         </p>

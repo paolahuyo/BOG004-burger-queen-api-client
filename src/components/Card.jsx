@@ -2,18 +2,15 @@ import React from 'react';
 import "../components/stylesheets/Cards.css";
 import { products } from '../api/Products';
 import { useEffect, useState } from "react";
-import Cart from "./Cart.js";
 
-function Cards({item, items}) {
+import CartOrder from './CartOrder';
+
+function Cards() {
+
+	const [vSumTotal, setVSumTotal] = useState(0);
+  	const [selectedProduct, setSelectedProduct] = useState([]);
+	
 	const [productos, setProductos] = useState([]);
-
-	// cosntante que guarda las propiedades del estado de los productos
-	const {id} = item;
-
-	// Funcion para agregar los productos al cart
-	const addProduct = id => {
-		const item = items.filter((item) => item.id === id)
-	}
 
 	useEffect(() => {
 		products()
@@ -25,10 +22,15 @@ function Cards({item, items}) {
 	}, []);
 
 	return (
-		<Cart>
 		<div>
+			<CartOrder
+              selectedProduct={selectedProduct}
+              vSumTotal={vSumTotal}
+              setVSumTotal={setVSumTotal}
+              setSelectedProduct={setSelectedProduct}
+            />
 			{productos.map((producto)=>(
-				<div className='each-card'>
+				<div className='each-card' key={producto.id}>
 				<ul className='items'>
 					<div className='image-item'>
 						<img src={producto.image} alt='Item'></img>
@@ -36,11 +38,10 @@ function Cards({item, items}) {
 					<li className='item-name'>{producto.name}</li>
 					<li>Precio: ${producto.price}</li>
 				</ul>
-				<button className='add-btn' onClick={() => addProduct(id)}>Agregar al carrito</button>
+				<button className='add-btn' onClick={() => (selectedProduct.producto.price) (vSumTotal.producto.price)}>Agregar al carrito</button>
 			</div>
 			))}
 		</div>
-		</Cart>
 	);
 }
 

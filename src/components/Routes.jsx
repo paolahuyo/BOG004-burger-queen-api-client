@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-dom';
 
 import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
@@ -10,34 +10,40 @@ import { getLoggedUser } from "../api/api";
 
 const router = () => {
 
-  const dataUser = getLoggedUser();
-  //const token = getToken();
-
- console.log(dataUser?.user);
-
   return (
     <Router>
         <Routes>
+
           <Route path='/' element={<Home />}/>
-          <Route exact path='/admin' element={<Admin />}/>
-          {/* { dataUser && dataUser.user.roles.admin
-            ? <Route path='/admin' element={<Admin />}/>
-            : null
-          } */}
-          <Route exact path='/waiter' element={<Waiter />}/>
-          {/* { dataUser?.user.roles.waiter
-            ? <Route path='/waiter' element={<Waiter />}/>
-            : null
-          } */}
-          <Route exact path='/kitchen' element={<Kitchen />}/>
-          {/* { dataUser?.user.roles.chef
-            ? <Route path='/chef' element={<Kitchen />}/>
-            : null
-          } */}
-          <Route element={<NotFound/>} />
+
+          <Route path='/admin' element={
+            <PrivateRoute role="admin">
+              <Admin />
+            </PrivateRoute>
+          }/>
+
+          <Route path='/waiter' element={
+            <PrivateRoute role="waiter">
+              <Waiter />
+            </PrivateRoute>
+          }/>
+
+          <Route path='/kitchen' element={
+            <PrivateRoute role="chef">
+              <Kitchen />
+            </PrivateRoute>
+          }/>
+
+          <Route path='/404' element={<NotFound/>} />
+
         </Routes>
     </Router>
   );
 }
 
+const PrivateRoute = ({ children, role }) => {
+  const authed = getLoggedUser();
+  console.log(authed.user.roles);
+    return authed.user.roles[role] ? children : <Navigate to="/404" />
+}
 export default router;
