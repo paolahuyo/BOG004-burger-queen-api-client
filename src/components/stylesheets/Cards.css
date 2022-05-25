@@ -10,16 +10,14 @@
     margin: 15px;
     background-color: rgb(255, 255, 255);
     font-size: 0.7rem;
-    width: 16vh;
-    height: 19vh;
+    width: 13vh;
+    height: 18vh;
     border-radius: 20px;
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
 
   .image-item img {
-    width: 10vh;
-    height: 9vh;
     max-width: 10vh;
     max-height: 9vh;
   }
