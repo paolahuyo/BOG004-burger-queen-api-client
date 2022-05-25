@@ -2,7 +2,7 @@ import React from 'react';
 
 const ItemCart = ({item}) => {
     return (
-        <div>{item.name}</div>
+        <div>{item.name} {item.amount} ${item.price}</div>
     );
 }
 

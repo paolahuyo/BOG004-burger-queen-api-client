@@ -76,23 +76,22 @@
   color: #e5e5e5;
 }
 
-
-.cartContainer{
+.cartContainer {
   width: 100vh;
-  height: 50px;
-  display: grid;
-  grid-template-columns: (2, 1fr);
-  
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+
   .buttonCartContainer {
-    width: 30%;
+    width: 100%;
   }
 
   .buttonCart {
-    width: 20%;
+    width: 40%;
   }
 
   .products{
-    height: 20px;
+    height: 50vh;
     width: 20px;
   }
 
