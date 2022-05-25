@@ -8,7 +8,7 @@ import ItemCart from "./ItemCart";
 const Cart = () => {
 
     const [cartOpen, setCartOpen] = useState(false);
-    const [productsLenght, setProductsLength] = useState(0);
+    const [productsLength, setProductsLength] = useState(0);
 
     const { cartItems } = useContext(CartContext);
 
@@ -19,7 +19,6 @@ const Cart = () => {
     }, [cartItems]);
 
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
-
 
     return (
         <div className={styles.cartContainer}>
@@ -38,6 +37,7 @@ const Cart = () => {
                     ))}</div>
                     )}
                     <h2>Total: ${total} </h2>
+                    <button>SEND ORDER</button>
             </div>
         </div>
     );
