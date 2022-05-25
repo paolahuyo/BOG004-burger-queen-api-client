@@ -3,7 +3,6 @@ import "../components/stylesheets/Cards.css";
 import CartContext, {CartProvider} from '../Context/CartContext';
 import { callProducts } from "../api/Products"
 import { useContext, useEffect, useState } from "react";
-import CartOrder from './CartOrder';
 
 function Card() {
 

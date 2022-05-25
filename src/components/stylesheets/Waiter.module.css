@@ -26,7 +26,7 @@
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
@@ -77,12 +77,13 @@
 }
 
 .cartContainer {
-  height: 80vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
+  align-content: space-around;
 
   .buttonCartContainer {
-    width: 100%;
+    width: 80%;
   }
 
   .buttonCart {

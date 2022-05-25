@@ -27,18 +27,18 @@ const Cart = () => {
             <div >
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
-                    <div>{productsLenght}</div>
+                    <div># Products: {productsLenght}</div>
                 </div>
             </div>
             <div>
-                <h2>Order Cart</h2>
+                <h3>Order Cart</h3>
                 <table class="table table-bordered table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Producto:</th>
-                        <th scope="col">Cantidad pedida:</th>
-                        <th scope="col">Precio:</th>
-                        <th scope="col">Opciones:</th>
+                        <th scope="col">Product:</th>
+                        <th scope="col">Quantity:</th>
+                        <th scope="col">Price:</th>
+                        <th scope="col">Options:</th>
                     </tr>
                 </thead>
                 {cartItems.length ===0 ? <thead><tr><th>Empty Cart</th></tr></thead> : (

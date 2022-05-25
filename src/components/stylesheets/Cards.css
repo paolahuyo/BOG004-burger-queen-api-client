@@ -1,8 +1,7 @@
 .all-cards{
-  margin: 20px;
+  margin: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
 }
 
 .each-card {
@@ -10,9 +9,9 @@
     justify-self: center;
     margin: 15px;
     background-color: rgb(255, 255, 255);
-    font-size: 1rem;
+    font-size: 0.7rem;
     width: 16vh;
-    height: 22vh;
+    height: 19vh;
     border-radius: 20px;
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -26,10 +25,10 @@
   }
 
   li {
-    padding: 2%;
+    padding: 1%;
     color: black;
     list-style-type: none;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   ul{
@@ -38,7 +37,7 @@
   }
 
   .items {
-    margin: 5%;
+    margin: 3%;
     text-align: center;
   }
 
@@ -52,7 +51,7 @@
   }
 
   .add-btn {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: white;
     background-color: #3c879c;

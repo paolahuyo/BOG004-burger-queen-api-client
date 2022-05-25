@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { CartProvider } from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css';
 import logo from '../assets/logo-burger-queen.png';
 import Card from '../components/Card';
-import { CartProvider } from '../Context/CartContext';
 import Cart from '../components/Cart';
+
 
 export default function Waiter() {
 
@@ -45,7 +46,7 @@ export default function Waiter() {
                 />
                 <button type="submit" className={styles.Button} onClick={handleClient}>Send</button>
             </form>
-            {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client Name: {values.clientName}</p>}
+            {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client: {values.clientName}</p>}
             <Cart/>
             <p><Link className={styles.Link} to="/">Sign Out</Link></p>
           </div>
