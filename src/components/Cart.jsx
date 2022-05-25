@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import orderIcon from '../assets/order.png'
+import takeAwayOrder from '../assets/order.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
@@ -29,16 +29,27 @@ const Cart = () => {
             <div >
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
+                    <div>{productsLenght}</div>
                 </div>
             </div>
             <div>
                 <h2>Order Cart</h2>
-                {cartItems.length ===0 ? <p> Empty Cart</p> : (
-                    <div>{cartItems.map((item, i) => (
+                <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto:</th>
+                        <th scope="col">Cantidad pedida:</th>
+                        <th scope="col">Precio:</th>
+                    </tr>
+                </thead>
+                {cartItems.length ===0 ? <thead><tr><th>Empty Cart</th></tr></thead> : (
+                    <tbody>
+                        {cartItems.map((item, i) => (
                         <ItemCart key={i} item={item}/>
-                    ))}</div>
+                    ))}</tbody>
                     )}
                     <h2>Total: ${total} </h2>
+                    </table>
                     <button>SEND ORDER</button>
             </div>
         </div>
