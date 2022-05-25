@@ -47,5 +47,4 @@ const PrivateRoute = ({ children, role }) => {
   console.log(authed.user.roles);
     return authed.user.roles[role] ? children : <Navigate to="/404" />
 }
-
 export default router;
