@@ -4,8 +4,6 @@ import CartContext from '../Context/CartContext';
 const ItemCart = ({item}) => {
     const {deleteItemToCart, addItemToCart} = useContext(CartContext);
 
-    const { id } = item;
-
     return (
             <tr>
                 <td scope="row">{item.name}</td>
