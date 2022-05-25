@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/notFound";
 import { getLoggedUser } from "../api/api";
 
 const router = () => {
@@ -14,6 +14,7 @@ const router = () => {
     <Router>
 
         <Routes>
+
           <Route path='/' element={<Home />}/>
 
           <Route path='/admin' element={
@@ -46,5 +47,4 @@ const PrivateRoute = ({ children, role }) => {
   console.log(authed.user.roles);
     return authed.user.roles[role] ? children : <Navigate to="/404" />
 }
-
 export default router;

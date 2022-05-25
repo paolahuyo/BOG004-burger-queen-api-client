@@ -7,16 +7,13 @@ const ItemCart = ({item}) => {
     const { id } = item;
 
     return (
-        <div>
-            <div>
-                <p>{item.name}</p>
-                <p>{item.amount} ${item.price*item.amount}</p>
-                <div>
-                    <button onClick={()=> {addItemToCart(item)}}>ADD</button>
-                    <button onClick={()=> {deleteItemToCart(item)}}>DELETE</button>
-                </div>
-            </div>
-        </div>
+            <tr>
+                <td scope="row">{item.name}</td>
+                <td scope="row">{item.amount}</td>
+                <td scope="row">${item.price*item.amount}</td>
+                <td scope="row"><button onClick={()=> {addItemToCart(item)}}>ADD</button>
+                <button onClick={()=> {deleteItemToCart(item)}}>DELETE</button></td>
+            </tr>
     );
 }
 

@@ -24,6 +24,7 @@ export default function Waiter() {
 
     return (
       <CartProvider>
+        <p><Link className={styles.Link} to="/">Sign Out</Link></p>
         <div className={styles.Waiter}>
           <div id='menu'>
             <img src={logo} className={styles.Logo} alt="logo" />
@@ -47,7 +48,6 @@ export default function Waiter() {
             </form>
             {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client Name: {values.clientName}</p>}
             <Cart/>
-            <p><Link className={styles.Link} to="/">Sign Out</Link></p>
           </div>
         </div>
       </CartProvider>
