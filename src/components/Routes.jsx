@@ -12,8 +12,8 @@ const router = () => {
 
   return (
     <Router>
-        <Routes>
 
+        <Routes>
           <Route path='/' element={<Home />}/>
 
           <Route path='/admin' element={
