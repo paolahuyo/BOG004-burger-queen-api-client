@@ -6,10 +6,8 @@ import ItemCart from "./ItemCart";
 
 const Cart = () => {
 
-     /* Creamos 2 estados, uno para ver si el carrito esta abierto o no 
-  y otro para obtener la cantidad de productos que tenemos en el carrito */
-    const [cartOpen, setCartOpen] = useState(false);
-    const [productsLength, setProductsLength] = useState(0);
+     /* Creamos un estado para obtener la cantidad de productos que tenemos en el carrito */
+    const [productsLenght, setProductsLength] = useState(0);
 
     /* Traemos del context los productos del carrito */
     const { cartItems } = useContext(CartContext);
@@ -40,13 +38,15 @@ const Cart = () => {
                         <th scope="col">Producto:</th>
                         <th scope="col">Cantidad pedida:</th>
                         <th scope="col">Precio:</th>
+                        <th scope="col">Opciones:</th>
                     </tr>
                 </thead>
                 {cartItems.length ===0 ? <thead><tr><th>Empty Cart</th></tr></thead> : (
                     <tbody>
                         {cartItems.map((item, i) => (
                         <ItemCart key={i} item={item}/>
-                    ))}</tbody>
+                    ))}
+                    </tbody>
                     )}
                     <h2>Total: ${total} </h2>
                     </table>
