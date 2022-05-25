@@ -77,7 +77,6 @@
 }
 
 .cartContainer {
-  width: 100vh;
   height: 50vh;
   display: flex;
   flex-direction: column;
