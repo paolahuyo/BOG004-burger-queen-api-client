@@ -1,6 +1,6 @@
 import React from 'react';
 import "../components/stylesheets/Cards.css";
-import CartContext from '../Context/CartContext';
+import CartContext, {CartProvider} from '../Context/CartContext';
 import { callProducts } from "../api/Products"
 import { useContext, useEffect, useState } from "react";
 

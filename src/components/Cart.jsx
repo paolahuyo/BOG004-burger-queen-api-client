@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import orderIcon from '../assets/order.png'
-import takeAwayOrder from '../assets/take-away.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
@@ -27,9 +26,7 @@ const Cart = () => {
 
     return (
         <div className={styles.cartContainer}>
-            <div 
-            onClick={()=> setCartOpen(!cartOpen)}
-            className={styles.buttonCartContainer}>
+            <div >
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
                 </div>
