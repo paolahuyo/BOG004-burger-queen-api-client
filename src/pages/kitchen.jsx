@@ -41,7 +41,6 @@ export default function Kitchen() {
              </div>
             }
 
-        
         </div>
 
         </div>
