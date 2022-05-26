@@ -17,9 +17,18 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
 
-  .image-item img {
+  .image-item{
+    display: grid;
+    height: 9vh;
+    align-self: center;
+    justify-self: center;
+  }
+
+  img {
     max-width: 10vh;
     max-height: 9vh;
+    align-self: center;
+    justify-self: center;
   }
 
   li {

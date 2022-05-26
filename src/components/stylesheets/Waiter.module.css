@@ -1,4 +1,4 @@
-.Waiter {
+.Bigbox {
     min-height: 100vh;
     text-align: center;
     font-family: 'Poppins',sans-serif;
@@ -13,6 +13,18 @@
     width: 200px;
     pointer-events: none;
     justify-self: center;
+}
+
+Li{
+  color: #ffffff;
+}
+
+.Delivered{
+  color: green ;
+}
+
+.Orderstext{
+  color:#080710;
 }
 
 .Link {

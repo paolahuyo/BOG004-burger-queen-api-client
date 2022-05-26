@@ -25,7 +25,7 @@ export default function Waiter() {
 
     return (
       <CartProvider>
-        <div className={styles.Waiter}>
+        <div className={styles.Bigbox}>
           <div id='menu'>
             <img src={logo} className={styles.Logo} alt="logo" />
             <h1 className={styles.h1}>Menu</h1>
