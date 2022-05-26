@@ -27,7 +27,7 @@ function Card() {
 					<div className='each-card' key={product.id}>
 					<ul className='items'>
 						<div className='image-item'>
-							<img src={product.image} alt='Item'></img>
+							<img className='img-product' src={product.image} alt='Item'></img>
 						</div>
 						<li className='item-name'>{product.name}</li>
 						<li>Precio: ${product.price}</li>

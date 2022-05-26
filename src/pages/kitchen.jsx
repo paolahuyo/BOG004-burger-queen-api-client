@@ -21,8 +21,8 @@ export default function Kitchen() {
     <CartProvider>
       <section className={styles.Box}>
         <h1>Página de cocina</h1>
-        {orders.map((order, i) => (
-          <section className='all-cards' key={order.id} >
+        {orders.map((order) => (
+          <section className='all-cards' key={order.id} >  
           <div className='card' style={{width:400}}>
             <h2 className={styles.Orderstext}>ORDER</h2>
             <div className='card-body'>
@@ -31,10 +31,13 @@ export default function Kitchen() {
               {order.dateProcessed && <p className={styles.Delivered}> Delivered: {order.dateProcessed}</p>}
               <p className={styles.Orderstext}> Created: {order.dataEntry}</p>
               <ul className="list-group list-group-flush">
-                <li className={styles.Orderstext}>{order.products.qty}</li>
-                <li className={styles.Orderstext}>{orders.products}</li>
+                {order.products.map((product) => (
+                  <li className={styles.Orderstext}>{product.product.name} ${product.product.price}</li>
+                ))}
+                
+                {/* <li className={styles.Orderstext}>{order.products}</li>
                 <li className={styles.Orderstext}>{orders[i].products[i].product.name} {orders[i].products[i].product.price}</li>
-                <li className={styles.Orderstext}>{orders[1].products[1].product.name} {orders[1].products[1].product.price}</li>
+                <li className={styles.Orderstext}>{orders[1].products[1].product.name} {orders[1].products[1].product.price}</li>  */}
               </ul>
               {!order.dateProcessed &&
               <div className='card-body'>

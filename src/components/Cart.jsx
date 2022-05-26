@@ -3,8 +3,9 @@ import takeAwayOrder from '../assets/order.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
+import { createOrder } from '../api/Products'
 
-const Cart = () => {
+const Cart = ({pasarOrden}) => {
 
      /* Creamos un estado para obtener la cantidad de productos que tenemos en el carrito */
     const [productsLenght, setProductsLength] = useState(0);
@@ -54,7 +55,7 @@ const Cart = () => {
                         </tr>
                     </tfoot>
                     </table>
-                    <button>SEND ORDER</button>
+                    <button onClick={()=>pasarOrden({cartItems})}>SEND ORDER</button>
             </div>
         </div>
     );
