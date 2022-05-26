@@ -32,7 +32,7 @@ const Cart = () => {
             </div>
             <div>
                 <h2>Order Cart</h2>
-                <table class="table table-bordered table-dark">
+                <table className="table table-bordered table-dark">
                 <thead>
                     <tr>
                         <th scope="col">Producto:</th>
@@ -48,7 +48,11 @@ const Cart = () => {
                     ))}
                     </tbody>
                     )}
-                    <h2>Total: ${total} </h2>
+                    <tfoot>
+                        <tr>
+                            <th>Total: ${total}</th>
+                        </tr>
+                    </tfoot>
                     </table>
                     <button>SEND ORDER</button>
             </div>
