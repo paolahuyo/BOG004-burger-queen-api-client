@@ -9,10 +9,26 @@
     color: #ffffff;
   }
 
+.Box {
+    min-height: 100vh;
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
 .Logo {
     width: 200px;
     pointer-events: none;
     justify-self: center;
+}
+
+.all-cards{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 Li{
@@ -108,3 +124,4 @@ Li{
   }
 
 }
+
