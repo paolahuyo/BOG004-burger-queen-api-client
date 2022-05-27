@@ -13,7 +13,7 @@ export default function Waiter() {
   const clientRef = useRef();
   const [values, setValues] = useState({
       clientName: " ",
-      currentDate: " "
+      currentDate: new Date().toLocaleString();
   });
 
   const handleClient = (e) => {
@@ -21,7 +21,7 @@ export default function Waiter() {
     const newValues = {
       ...values,
       [e.target.name]: e.target.value,
-      currentDate: new Date().toLocaleString()
+      [e.target.currentDate]: e.target.value
       };
       console.log('fecha',values);
       setValues(newValues);
