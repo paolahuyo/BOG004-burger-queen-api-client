@@ -16,7 +16,6 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
-
   if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
