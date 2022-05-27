@@ -6,11 +6,11 @@ const ItemCart = ({item}) => {
 
     return (
             <tr>
-                <td scope="row">{item.name}</td>
-                <td scope="row">{item.amount}</td>
-                <td scope="row">${item.price*item.amount}</td>
-                <td scope="row"><button onClick={()=> {addItemToCart(item)}}>ADD</button>
-                <button onClick={()=> {deleteItemToCart(item)}}>DELETE</button></td>
+                <th scope="row">{item.name}</th>
+                <th scope="row">{item.amount}</th>
+                <th scope="row">${item.price*item.amount}</th>
+                <th scope="row"><button onClick={()=> {addItemToCart(item)}}>ADD</button>
+                <button onClick={()=> {deleteItemToCart(item)}}>DELETE</button></th>
             </tr>
     );
 }

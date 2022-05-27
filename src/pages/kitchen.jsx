@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getOrder } from '../api/Products';
 import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
@@ -16,7 +16,8 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
-  if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
+
+  if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
       <section className={styles.Box}>
@@ -41,7 +42,7 @@ export default function Kitchen() {
               </ul>
               {!order.dateProcessed &&
               <div className='card-body'>
-                <a href="#" className='card-link'>READY TO DELIVER</a>
+                <a href  ="#" className='card-link'>READY TO DELIVER</a>
               </div>
               }
             </div>
@@ -55,21 +56,3 @@ export default function Kitchen() {
     </CartProvider>
     );
 }
-
-
-{/* <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div> */}
