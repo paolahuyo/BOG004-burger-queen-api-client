@@ -7,8 +7,6 @@ function Card() {
 
 	const {addItemToCart} = useContext(CartContext)
 	const [products, setProducts] = useState([]);
-	const [vSumTotal, setVSumTotal] = useState(0);
-	const [selectedProduct, setSelectedProduct] = useState([]);
 
 	useEffect(() => {
 		callProducts()
