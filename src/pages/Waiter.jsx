@@ -6,12 +6,14 @@ import logo from '../assets/logo-burger-queen.png';
 import Card from '../components/Card';
 import Cart from '../components/Cart';
 import { createOrder } from '../api/Products'
+import { getLoggedUser } from '../api/api';
 
 export default function Waiter() {
 
   const clientRef = useRef();
   const [values, setValues] = useState({
-      clientName: " "
+      clientName: " ",
+      currentDate: " "
   });
 
   const handleClient = (e) => {
@@ -19,18 +21,38 @@ export default function Waiter() {
     const newValues = {
       ...values,
       [e.target.name]: e.target.value,
+      currentDate: new Date().toLocaleString()
       };
+      console.log('fecha',values);
       setValues(newValues);
   }
 
   const pasarOrden = ({cartItems}) => {
+
+  const userActive = getLoggedUser();
+
     console.log('vamos bien');
     createOrder({
-      client: values.clientName,
-    }).then((res) => {
-      console.log(res.data)
-    })
-    .catch()
+        client: values.clientName,
+        userId: userActive.user.id,
+        status: 'pending',
+        products: cartItems.map((e)=>{
+          return {
+            amount: e.amount,
+            product: {
+              dateEntry: values.currentDate,
+              id: e.id,
+              image: e.image,
+              name: e.name,
+              price: e.price,
+              type: e.type
+            }
+          }
+        })
+      }).then((res) => {
+        console.log(res.data)
+      })
+      .catch()
   }
 
     return (

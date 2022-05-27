@@ -34,7 +34,7 @@ export default function Kitchen() {
                 {order.products.map((product) => (
                   <li className={styles.Orderstext}>{product.product.name} ${product.product.price}</li>
                 ))}
-                
+
                 {/* <li className={styles.Orderstext}>{order.products}</li>
                 <li className={styles.Orderstext}>{orders[i].products[i].product.name} {orders[i].products[i].product.price}</li>
                 <li className={styles.Orderstext}>{orders[1].products[1].product.name} {orders[1].products[1].product.price}</li>  */}
