@@ -12,14 +12,16 @@ export default function Waiter() {
 
   const clientRef = useRef();
   const [values, setValues] = useState({
-    clientName: " "
+      clientName: " ",
+      currentDate: new Date().toLocaleString()
   });
 
   const handleClient = (e) => {
     e.preventDefault();
     const newValues = {
       ...values,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      [e.target.currentDate]: e.target.value
       };
       setValues(newValues);
   }

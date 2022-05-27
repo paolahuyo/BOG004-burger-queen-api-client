@@ -16,12 +16,8 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
-<<<<<<< HEAD
   
   if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
-=======
-  if (orders !== undefined && orders[0] !== undefined)
->>>>>>> fc78bcd3 (guardando cambios antes de hacer el pull)
   return (
     <CartProvider>
       <section className={styles.Box}>
