@@ -16,7 +16,10 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 084ab4c2cff1d6c77666609f5f2d3443c1239351
   if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
@@ -28,7 +31,6 @@ export default function Kitchen() {
             <h2 className={styles.Orderstext}>ORDER</h2>
             <div className='card-body'>
               <p className={styles.Orderstext}>{order.client}</p>
-              <p className={styles.Orderstext}>{order.status}</p>
               {order.dateProcessed && <p className={styles.Delivered}> Delivered: {order.dateProcessed}</p>}
               <p className={styles.Orderstext}> Created: {order.dataEntry}</p>
               <ul className="list-group list-group-flush">
