@@ -16,7 +16,7 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
-  if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
+  if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
       <section className={styles.Box}>
@@ -27,7 +27,6 @@ export default function Kitchen() {
             <h2 className={styles.Orderstext}>ORDER</h2>
             <div className='card-body'>
               <p className={styles.Orderstext}>{order.client}</p>
-              <p className={styles.Orderstext}>{order.status}</p>
               {order.dateProcessed && <p className={styles.Delivered}> Delivered: {order.dateProcessed}</p>}
               <p className={styles.Orderstext}> Created: {order.dataEntry}</p>
               <ul className="list-group list-group-flush">
@@ -55,21 +54,3 @@ export default function Kitchen() {
     </CartProvider>
     );
 }
-
-
-{/* <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div> */}
