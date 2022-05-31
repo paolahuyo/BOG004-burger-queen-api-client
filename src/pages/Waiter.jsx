@@ -36,7 +36,7 @@ export default function Waiter() {
             return {
               amount: e.amount,
               product: {
-                dateEntry: new Date().toLocaleString(),
+                dateEntry: new Date().toLocaleString('sv'),
                 id: e.id,
                 image: e.image,
                 name: e.name,
