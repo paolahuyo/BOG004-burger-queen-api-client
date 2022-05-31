@@ -5,7 +5,7 @@ import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
 import { createOrder } from '../api/Products'
 
-const Cart = ({pasarOrden}) => {
+const Cart = ({transitOrder}) => {
 
      /* Creamos un estado para obtener la cantidad de productos que tenemos en el carrito */
     const [productsLenght, setProductsLength] = useState(0);
@@ -27,7 +27,7 @@ const Cart = ({pasarOrden}) => {
         <div className={styles.cartContainer}>
             <div >
                 <div className={styles.buttonCart}>
-                    <img src={takeAwayOrder} alt="order icon" style={{ width: 100 }} />
+                    <img src={takeAwayOrder} alt="order icon" style={{ width: 80 }} />
                     <div># Products: {productsLenght}</div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ const Cart = ({pasarOrden}) => {
                         </tr>
                     </tfoot>
                     </table>
-                    <button onClick={()=>pasarOrden({cartItems})}>SEND ORDER</button>
+                    <button onClick={()=>transitOrder({cartItems})}>SEND ORDER</button>
             </div>
         </div>
     );

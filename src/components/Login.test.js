@@ -26,3 +26,4 @@ it('Componente login', async () => {
     console.log(errMsg.textContent)
     expect(errMsg.textContent).toBe('El usuario o contraseña son erroneos')
 });
+

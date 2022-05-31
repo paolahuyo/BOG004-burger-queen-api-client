@@ -12,47 +12,43 @@ export default function Waiter() {
 
   const clientRef = useRef();
   const [values, setValues] = useState({
-      clientName: " ",
-      currentDate: " "
+    clientName: " "
   });
 
   const handleClient = (e) => {
     e.preventDefault();
     const newValues = {
       ...values,
-      [e.target.name]: e.target.value,
-      currentDate: new Date().toLocaleString()
+      [e.target.name]: e.target.value
       };
-      console.log('fecha',values);
       setValues(newValues);
   }
 
-  const pasarOrden = ({cartItems}) => {
+  const transitOrder = ({cartItems}) => {
 
-  const userActive = getLoggedUser();
-
-    console.log('vamos bien');
-    createOrder({
-        client: values.clientName,
-        userId: userActive.user.id,
-        status: 'pending',
-        products: cartItems.map((e)=>{
-          return {
-            amount: e.amount,
-            product: {
-              dateEntry: values.currentDate,
-              id: e.id,
-              image: e.image,
-              name: e.name,
-              price: e.price,
-              type: e.type
+    const userActive = getLoggedUser();
+      createOrder({
+          client: values.clientName,
+          userId: userActive.user.id,
+          status: 'pending',
+          dateEntry: new Date().toLocaleString('sv'),
+          products: cartItems.map((e)=>{
+            return {
+              amount: e.amount,
+              product: {
+                dateEntry: new Date().toLocaleString(),
+                id: e.id,
+                image: e.image,
+                name: e.name,
+                price: e.price,
+                type: e.type
+              }
             }
-          }
+          })
+        }).then((res) => {
+          console.log(res.data)
         })
-      }).then((res) => {
-        console.log(res.data)
-      })
-      .catch()
+        .catch()
   }
 
     return (
@@ -79,7 +75,7 @@ export default function Waiter() {
                 <button type="submit" className={styles.Button} onClick={handleClient}>Send</button>
             </form>
             {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client: {values.clientName}</p>}
-            <Cart pasarOrden={pasarOrden}/>
+            <Cart transitOrder={transitOrder}/>
             <p><Link className={styles.Link} to="/">Sign Out</Link></p>
           </div>
         </div>
