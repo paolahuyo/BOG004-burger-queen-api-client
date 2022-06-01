@@ -3,7 +3,6 @@ import takeAwayOrder from '../assets/order.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
-import { createOrder } from '../api/Products'
 
 const Cart = ({transitOrder}) => {
 

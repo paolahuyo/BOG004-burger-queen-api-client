@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { getOrder } from '../api/Products';
 import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
 import { CartProvider } from '../Context/CartContext';
-=======
-import React, { useContext, useEffect, useState } from 'react';
-import { getOrder } from '../api/Products';
->>>>>>> 08bbc92f (creando ordenes)
 
 export default function Kitchen() {
 
