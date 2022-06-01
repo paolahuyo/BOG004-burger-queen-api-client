@@ -45,5 +45,15 @@ const getOrder = () => {
     });
 }
 
+// Actualizar orden
+const updateOrder = (id, update) => { 
+    return axios.patch(BASE_URL+'orders/'+id, update, {
+           headers: {
+               "content-type": "application/json",
+               authorization: 'Bearer ' + getToken()
+           }
+       });
+}
 
-export {callProducts, createProduct, deleteProduct, createOrder, getOrder} ;
+
+export {callProducts, createProduct, deleteProduct, createOrder, getOrder, updateOrder} ;

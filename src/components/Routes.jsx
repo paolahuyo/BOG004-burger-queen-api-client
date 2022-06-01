@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-
 
 import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
-import Kitchen from "../pages/kitchen";
+import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
-import NotFound from "../pages/notFound";
+import NotFound from "../pages/NotFound";
 import { getLoggedUser } from "../api/api";
 
 const router = () => {

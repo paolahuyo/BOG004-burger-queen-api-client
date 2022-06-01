@@ -6,6 +6,10 @@ const createUser = (user) => {
     return axios.post(BASE_URL+'users', user);
 }
 
+const getId = () => {
+    return getLoggedUser().user.id;
+}
+
 const login = (payload) => {
     return axios.post(BASE_URL+'login', payload);
 }
@@ -49,5 +53,6 @@ export {
     getToken,
     getProducts,
     createProduct,
-    saveProduct
+    saveProduct,
+    getId
 }

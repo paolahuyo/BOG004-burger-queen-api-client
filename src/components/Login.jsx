@@ -36,15 +36,15 @@ function Login () {
                     navigate('/admin')
                 }
         } catch(err) {
-            if(!err?.response){
-                setErrMsg("There is no response from the server")
-            }else if(err.response?.status === 400){
-                setErrMsg("The email or password is wrong")
-            }else if(err.response?.status === 401){
-                setErrMsg("Without authorization")
-            }else{
-                setErrMsg("Fallo al ingresar")
-            }
+            // if(!err?.response){
+            //     setErrMsg("There is no response from the server")
+            // }else if(err.response?.status === 400){
+            //     setErrMsg("The email or password is wrong")
+            // }else if(err.response?.status === 401){
+            //     setErrMsg("Without authorization")
+            // }else{
+            //     setErrMsg("Fallo al ingresar")
+            // }
         }
     }
 
@@ -84,8 +84,3 @@ function Login () {
 }
 
 export default Login;
-
-// {
-//   "email": "grace.hopper@burguers.com",
-//   "password": "123456"
-// }
