@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getOrder, updateOrder } from '../api/Products';
-import { getId } from "../api/api"
 import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
 import { CartProvider } from '../Context/CartContext';
@@ -9,66 +8,39 @@ export default function Kitchen() {
 
   const [orders, setOrders] = useState([]);
 
-  const handleClick = () => {
-    updateOrder (getId(),{
+  const handleClick =  (id) => {
+    console.log("holi")
+     updateOrder (id, {
       status: 'delivered',
       dateProcessed: new Date().toLocaleString('sv')
     }).then((res) => {
+        getListOrders();
        console.log(res.data)
        })
      .catch()
-    
   }
-
-  // createOrder({
-  //   client: values.clientName,
-  //   userId: userActive.user.id,
-  //   status: 'pending',
-  //   dateEntry: new Date().toLocaleString('sv'),
-  //   products: cartItems.map((e)=>{
-  //     return {
-  //       amount: e.amount,
-  //       product: {
-  //         dateEntry: new Date().toLocaleString('sv'),
-  //         id: e.id,
-  //         image: e.image,
-  //         name: e.name,
-  //         price: e.price,
-  //         type: e.type
-  //       }
-  //     }
-  //   })
-  // }).then((res) => {
-  //   console.log(res.data)
-  // })
-  // .catch()
-
-  // let dateNow = new Date();
-  // const upOrder = {
-  //   userId: getId(),
-  //   status: "delivered",
-  //   dateProcessed:
-  //     dateNow.getFullYear() +
-  //     "-" +
-  //     (dateNow.getMonth() + 1) +
-  //     "-" +
-  //     dateNow.getDate() +
-  //     " " +
-  //     dateNow.getHours() +
-  //     ":" +
-  //     dateNow.getMinutes(),
-  // };
       
   useEffect(() => {
-    getOrder()
-      .then((res) => {
-        console.log(res.data)
-        setOrders(res.data)
-      })
-      .catch()
+    // getOrder()
+    //   .then((res) => {
+    //     console.log(res.data)
+    //     setOrders(res.data)
+    //   })
+    //   .catch()
+    getListOrders();
   }, [])
+
+  const getListOrders = () => {
+    getOrder()
+    .then((res) => {
+      console.log(res.data)
+      setOrders(res.data)
+    })
+    .catch()
+  }
   
-  if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
+  if (orders !== undefined && orders[0] !== undefined)
+  
   return (
     <CartProvider>
       <section className={styles.Box}>
@@ -90,7 +62,7 @@ export default function Kitchen() {
               </ul>
               {!order.dateProcessed &&
               <div className='card-body'>
-                <button className="btn btn-primary" onClick={handleClick}>READY TO DELIVER</button>
+                <button className="btn btn-primary" onClick={()=> handleClick(order.id)}>READY TO DELIVER</button>
               </div>
               }
             </div>
