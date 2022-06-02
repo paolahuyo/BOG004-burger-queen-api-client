@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import Login from './Login'
 import { createMemoryHistory } from 'history'
@@ -23,7 +24,18 @@ it('Componente login', async () => {
     let errMsg;
     await waitFor(() => errMsg = screen.getByTestId('login-error-message'));
     debug()
-    console.log(errMsg.textContent)
-    expect(errMsg.textContent).toBe('El usuario o contraseña son erroneos')
+    expect(errMsg.textContent).toBe('The email or password is wrong')
 });
+
+it("User login whitout errors", () =>{
+    render(<Login />);
+
+    userEvent.type(screen.getByPlaceholderText('Email'), 'grace.hopper@burguers.com');
+    userEvent.type(screen.getAllByPlaceholderText('Password'), '123456');
+
+    userEvent.click(screen.getAllByRole('button'), {name: 'Log In'});
+
+    expect(screen)
+
+})
 

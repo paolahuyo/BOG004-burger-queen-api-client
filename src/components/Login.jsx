@@ -78,7 +78,7 @@ function Login () {
                     onChange={handleChange}
                 />
             {errMsg && <p ref={errRef} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{errMsg}</p>}
-            <button type="submit" className={styles.LoginButton}>Log In</button>
+            <button type="submit" className={styles.LoginButton} name="submitLogin">Log In</button>
         </form>
     )
 }
