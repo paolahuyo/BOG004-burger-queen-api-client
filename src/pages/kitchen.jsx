@@ -16,7 +16,7 @@ export default function Kitchen() {
       })
       .catch()
   }, [])
-  
+
   if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
   return (
     <CartProvider>
