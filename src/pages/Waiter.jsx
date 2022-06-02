@@ -12,14 +12,16 @@ export default function Waiter() {
 
   const clientRef = useRef();
   const [values, setValues] = useState({
-    clientName: " "
+      clientName: " ",
+      currentDate: new Date().toLocaleString()
   });
 
   const handleClient = (e) => {
     e.preventDefault();
     const newValues = {
       ...values,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      [e.target.currentDate]: e.target.value
       };
       setValues(newValues);
   }
@@ -60,11 +62,11 @@ export default function Waiter() {
             <Card/>
           </div>
           <div className={styles.divRight}>
-            <form id='client'>
-                <label className={styles.p} htmlFor="client">Client Name: </label>
+            <form id='client' style={{margin:20}}>
+                <label className={styles.Label} htmlFor="client">Client Name: </label>
                 <input className={styles.Input} type="text"
                   ref={clientRef}
-                  id="clientName"
+                  id='clientName'
                   name='clientName'
                   placeholder='The Client Name'
                   value={values.clientName}
@@ -72,11 +74,11 @@ export default function Waiter() {
                   onChange={handleClient}
                   data-testid="test-client-name"
                 />
-                <button type="submit" className={styles.Button} onClick={handleClient}>Send</button>
+                <button type="submit" className={styles.Button} onClick={handleClient}>Send Name</button>
             </form>
             {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client: {values.clientName}</p>}
             <Cart transitOrder={transitOrder}/>
-            <p><Link className={styles.Link} to="/">Sign Out</Link></p>
+            <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}} to="/">Sign Out</button>
           </div>
         </div>
       </CartProvider>

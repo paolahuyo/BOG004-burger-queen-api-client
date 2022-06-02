@@ -1,9 +1,9 @@
 import React from 'react'
-import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Login from './Login'
-import {createMemoryHistory} from 'history'
-import {Router} from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 
 // npm test -- login.test.js
 

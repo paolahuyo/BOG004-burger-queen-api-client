@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import CartContext from '../Context/CartContext';
+import plusIcon from '../assets/plus-white.png';
 
 const ItemCart = ({item}) => {
     const {deleteItemToCart, addItemToCart} = useContext(CartContext);
 
     return (
             <tr>
-                <td scope="row">{item.name}</td>
-                <td scope="row">{item.amount}</td>
-                <td scope="row">${item.price*item.amount}</td>
-                <td scope="row"><button onClick={()=> {addItemToCart(item)}}>ADD</button>
-                <button onClick={()=> {deleteItemToCart(item)}}>DELETE</button></td>
+                <th scope="row">{item.name}</th>
+                <th scope="row">{item.amount}</th>
+                <th scope="row">${item.price*item.amount}</th>
+                <th scope="row"><button className="btn btn-sm btn-success" onClick={()=> {addItemToCart(item)}}><span src={plusIcon}></span>Add</button>
+                <button class="btn btn-sm btn-danger"  onClick={()=> {deleteItemToCart(item)}}>Delete</button></th>
             </tr>
     );
 }

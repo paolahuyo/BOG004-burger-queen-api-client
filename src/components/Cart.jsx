@@ -3,7 +3,7 @@ import takeAwayOrder from '../assets/order.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
-import { createOrder } from '../api/Products'
+import sendIcon from  '../assets/send-dish-kitchen.png'
 
 const Cart = ({transitOrder}) => {
 
@@ -28,12 +28,12 @@ const Cart = ({transitOrder}) => {
             <div >
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 80 }} />
-                    <div># Products: {productsLenght}</div>
+                    <p className={styles.p}># Products: {productsLenght} items</p>
                 </div>
             </div>
             <div>
                 <h3>Order Cart</h3>
-                <table className="table table-bordered table-dark">
+                <table className="table table-striped table-dark table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Product:</th>
@@ -42,20 +42,20 @@ const Cart = ({transitOrder}) => {
                         <th scope="col">Options:</th>
                     </tr>
                 </thead>
-                {cartItems.length ===0 ? <thead><tr><th>Empty Cart</th></tr></thead> : (
+                {cartItems.length ===0 ? <thead><tr><th scope="row">Empty Cart</th></tr></thead> : (
                     <tbody>
                         {cartItems.map((item, i) => (
-                        <ItemCart key={i} item={item}/>
+                        <ItemCart scope="col" key={i} item={item}/>
                     ))}
                     </tbody>
                     )}
                     <tfoot>
                         <tr>
-                            <th>Total: ${total}</th>
+                            <th scope="col">Total: ${total}</th>
                         </tr>
                     </tfoot>
                     </table>
-                    <button onClick={()=>transitOrder({cartItems})}>SEND ORDER</button>
+                    <button className='btn btn-info btn-lg' onClick={()=>transitOrder({cartItems})}>Send Order</button>
             </div>
         </div>
     );

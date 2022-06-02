@@ -84,8 +84,3 @@ function Login () {
 }
 
 export default Login;
-
-// {
-//   "email": "grace.hopper@burguers.com",
-//   "password": "123456"
-// }

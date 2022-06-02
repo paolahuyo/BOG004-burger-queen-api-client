@@ -54,7 +54,7 @@ Li{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
@@ -62,7 +62,6 @@ Li{
   }
 
 .divRight{
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-content: space-evenly;
@@ -74,8 +73,9 @@ Li{
 }
 .Label{
     margin-top: 30px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
+    margin-right: 20px;
 }
 .Input{
     height: 60px;
@@ -84,18 +84,17 @@ Li{
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px 8px;
+    margin-right: 20px;
     font-size: 16px;
     font-weight: 300;
 }
 .Button{
-  margin-top: 50px;
   width: 30%;
   background-color: #ffffff;
   color: #080710;
   padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -109,6 +108,7 @@ Li{
   display: flex;
   flex-direction: column;
   align-content: space-around;
+  justify-content: space-around;
 
   .buttonCartContainer {
     width: 80%;

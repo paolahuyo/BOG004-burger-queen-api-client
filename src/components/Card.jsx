@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../components/stylesheets/Cards.css";
 import CartContext, {CartProvider} from '../Context/CartContext';
 import { callProducts } from "../api/Products"
-import { useContext, useEffect, useState } from "react";
 
 function Card() {
 
 	const {addItemToCart} = useContext(CartContext)
 	const [products, setProducts] = useState([]);
-	const [vSumTotal, setVSumTotal] = useState(0);
-	const [selectedProduct, setSelectedProduct] = useState([]);
 
 	useEffect(() => {
 		callProducts()
@@ -37,26 +34,6 @@ function Card() {
 				))}
 			</div>
 		</CartProvider>
-		// <div>
-		// 	<CartOrder
-        //       selectedProduct={selectedProduct}
-        //       vSumTotal={vSumTotal}
-        //       setVSumTotal={setVSumTotal}
-        //       setSelectedProduct={setSelectedProduct}
-        //     />
-		// 	{productos.map((producto)=>(
-		// 		<div className='each-card' key={producto.id}>
-		// 		<ul className='items'>
-		// 			<div className='image-item'>
-		// 				<img src={producto.image} alt='Item'></img>
-		// 			</div>
-		// 			<li className='item-name'>{producto.name}</li>
-		// 			<li>Precio: ${producto.price}</li>
-		// 		</ul>
-		// 		<button className='add-btn' onClick={() => (selectedProduct.producto.price) (vSumTotal.producto.price)}>Agregar al carrito</button>
-		// 	</div>
-		// 	))}
-		// </div>
 	);
 }
 

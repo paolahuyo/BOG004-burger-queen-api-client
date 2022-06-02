@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getOrder } from '../api/Products';
+import { getOrder, updateOrder } from '../api/Products';
 import { Link } from 'react-router-dom';
 import styles from '../components/stylesheets/Waiter.module.css';
 import { CartProvider } from '../Context/CartContext';
@@ -8,16 +8,32 @@ export default function Kitchen() {
 
   const [orders, setOrders] = useState([]);
 
+  const handleClick =  (id) => {
+    console.log("holi")
+     updateOrder (id, {
+      status: 'delivered',
+      dateProcessed: new Date().toLocaleString('sv')
+    }).then((res) => {
+        getListOrders();
+       console.log(res.data)
+       })
+     .catch()
+  }
+
   useEffect(() => {
-    getOrder()
-      .then((res) => {
-        console.log(res.data)
-        setOrders(res.data)
-      })
-      .catch()
+    getListOrders();
   }, [])
 
-  if (orders !== undefined && orders[0] !== undefined) console.log("test " + JSON.stringify(orders[0].products[0].product.price));
+  const getListOrders = () => {
+    getOrder()
+    .then((res) => {
+      console.log(res.data)
+      setOrders(res.data)
+    })
+    .catch()
+  }
+
+  if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
       <section className={styles.Box}>
@@ -39,7 +55,7 @@ export default function Kitchen() {
               </ul>
               {!order.dateProcessed &&
               <div className='card-body'>
-                <button className="btn btn-primary">READY TO DELIVER</button>
+                <button className="btn btn-primary" onClick={()=> handleClick(order.id)}>READY TO DELIVER</button>
               </div>
               }
             </div>
