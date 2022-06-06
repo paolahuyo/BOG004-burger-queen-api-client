@@ -27,15 +27,15 @@ it('Componente login', async () => {
     expect(errMsg.textContent).toBe('The email or password is wrong')
 });
 
-it("User login whitout errors", () =>{
-    render(<Login />);
+// it("User login whitout errors", () =>{
+//     render(<Login />);
 
-    userEvent.type(screen.getByPlaceholderText('Email'), 'grace.hopper@burguers.com');
-    userEvent.type(screen.getAllByPlaceholderText('Password'), '123456');
+//     userEvent.type(screen.getByPlaceholderText('Email'), 'grace.hopper@burguers.com');
+//     userEvent.type(screen.getAllByPlaceholderText('Password'), '123456');
 
-    userEvent.click(screen.getAllByRole('button'), {name: 'Log In'});
+//     userEvent.click(screen.getAllByRole('button'), {name: 'Log In'});
 
-    expect(screen)
+//     expect(screen)
 
-})
+// })
 
