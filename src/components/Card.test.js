@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import {render, fireEvent, waitFor, screen} from '@testing-library/react'
-import { callProducts } from "../api/Products.js"
-import '@testing-library/jest-dom'
+import {render, fireEvent, waitFor, screen} from '@testing-library/react';
+import { callProducts } from "../api/Products.js";
+import '@testing-library/jest-dom';
 
 sessionStorage.user = JSON.stringify({
     accessToken: 'tokenfortest',
   });
-  
+
   const server = setupServer(
     rest.get('http://localhost:8080/products', (_req, res, ctx) => {
       return res(
@@ -26,7 +26,7 @@ sessionStorage.user = JSON.stringify({
       );
     })
   );
-  
+
   beforeAll(() => server.listen());
 
   it('response of products to NewOrder component', async () => {
@@ -42,7 +42,7 @@ sessionStorage.user = JSON.stringify({
         dataEntry: '2022-03-05 15:14:10'
       },
     ];
-  
+
     const productTestResult = await callProducts(activeSessionToken);
     expect(productTestResult).toEqual(productListTest);
   });

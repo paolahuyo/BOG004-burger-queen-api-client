@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate  } from 'react-router-dom';
-
 import Home from "../pages/Home";
 import Waiter from "../pages/Waiter";
 import Kitchen from "../pages/Kitchen";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
 import { getLoggedUser } from "../api/api";
+import OrdersReady from "../pages/OrdersReady";
 
 const router = () => {
 
@@ -36,6 +36,8 @@ const router = () => {
           }/>
 
           <Route path='/404' element={<NotFound/>} />
+
+          <Route path='/ready-orders' element={<OrdersReady/>} />
 
         </Routes>
     </Router>

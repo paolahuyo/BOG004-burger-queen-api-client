@@ -8,10 +8,19 @@ export default function Kitchen() {
 
   const [orders, setOrders] = useState([]);
 
+  const getListOrders = () => {
+    getOrder()
+    .then((res) => {
+      console.log(res.data)
+      setOrders(res.data)
+    })
+    .catch()
+  }
+
   const handleClick =  (id) => {
      updateOrder (id, {
       status: 'delivered',
-      dateProcessed: new Date().toLocaleString('sv')
+      dateProcessed: new Date().toLocaleString('sv').slice(0,-3)
     }).then((res) => {
         getListOrders();
        console.log(res.data)
@@ -23,13 +32,11 @@ export default function Kitchen() {
     getListOrders();
   }, [])
 
-  const getListOrders = () => {
-    getOrder()
-    .then((res) => {
-      console.log(res.data)
-      setOrders(res.data)
-    })
-    .catch()
+  const timeToDeliver = (info) => {
+    const dateNow = info.dateProcessed;
+    const dateOrder = info.dateEntry;
+    const restTime = (Date.parse(dateNow) - Date.parse(dateOrder))/1000/60;
+    return restTime;
   }
 
   if (orders !== undefined && orders[0] !== undefined)
@@ -44,7 +51,8 @@ export default function Kitchen() {
             <div className='card-body'>
               <h6 className={styles.Orderstext}>Client: {order.client}</h6>
               <p className={styles.Orderstext}>{order.status}</p>
-              {order.dateProcessed && <p className={styles.Delivered}> Delivered: {order.dateProcessed}</p>}
+              {order.dateProcessed && 
+              <p className={styles.Delivered}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>}
               <p className={styles.Orderstext}> Created: {order.dateEntry}</p>
               <ul className="list-group list-group-flush">
               <h6 className={styles.Orderstext}>Products</h6>

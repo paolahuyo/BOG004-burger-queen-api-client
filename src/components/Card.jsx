@@ -16,7 +16,6 @@ function Card() {
 		})
 		.catch(() =>{});
 	}, []);
-	  
 
 	return (
 		<CartProvider>

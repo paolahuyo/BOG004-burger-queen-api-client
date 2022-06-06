@@ -12,7 +12,7 @@ const Cart = () => {
     const [productsLenght, setProductsLength] = useState(0);
 
     /* Traemos del context los productos del carrito */
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, resetCart }  = useContext(CartContext);
 
     /* Cada vez que se modifica el carrito, actualizamos la cantidad de productos */
     useEffect(() => {
@@ -20,11 +20,6 @@ const Cart = () => {
             cartItems.reduce((previous, current) => previous + current.amount, 0)
         )
     }, [cartItems]);
-
-    const GoToCeroProducts = () => {
-		const initialState = setProductsLength(0);
-		return console.log(initialState, 'initialState');
-	}
 
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
@@ -34,14 +29,13 @@ const Cart = () => {
     const [values, setValues] = useState({
         clientName: " ",
     });
-  
+    
     const handleClient = (e) => {
       const newValues = {
         ...values,
         [e.target.name]: e.target.value,
         };
         setValues(newValues);
-        console.log(newValues)
     }
 
     const transitOrder = ({cartItems}) => {
@@ -70,6 +64,15 @@ const Cart = () => {
             .catch()
       }
 
+      const GoToCeroProducts = () => {
+		setProductsLength(0);
+        setValues({
+            clientName: " ",
+        });
+        resetCart();
+		return console.log(productsLenght, cartItems);
+	}
+
     return (
         <div className={styles.cartContainer}>
             <div >
@@ -80,7 +83,7 @@ const Cart = () => {
                   ref={clientRef}
                   id='clientName'
                   name='clientName'
-                  placeholder='The Client Name'
+                  placeholder= 'The Client Name'
                   value={values.clientName}
                   required
                   onChange={handleClient}
@@ -91,7 +94,7 @@ const Cart = () => {
             </div>
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 80 }} />
-                    <p className={styles.p}># Products: {productsLenght} items</p>
+                    <p className={styles.p}># Products: {productsLenght } items</p>
                 </div>
             </div>
             <div>
@@ -118,8 +121,8 @@ const Cart = () => {
                         </tr>
                     </tfoot>
                     </table>
-                    <button type="submit" className='btn btn-info btn-lg' onClick={ (e)=> {handleClient(e); transitOrder({cartItems})} }>Send Order</button>
-                    <Link to="/">Sign Out</Link>
+                    <button type="submit" className='btn btn-info btn-lg' onClick={ (e)=> {handleClient(e); transitOrder({cartItems}); GoToCeroProducts()} }>Send Order</button>
+                    <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link to="/">Sign Out</Link></button>
             </div>
         </div>
     );
