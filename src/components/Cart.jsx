@@ -20,6 +20,11 @@ const Cart = ({transitOrder}) => {
         )
     }, [cartItems]);
 
+    const GoToCeroProducts = () => {
+		const initialState = setProductsLength(0);
+		return console.log(initialState, 'initialState');
+	}
+
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
 
@@ -55,7 +60,7 @@ const Cart = ({transitOrder}) => {
                         </tr>
                     </tfoot>
                     </table>
-                    <button className='btn btn-info btn-lg' onClick={()=>transitOrder({cartItems})}>Send Order</button>
+                    <button className='btn btn-info btn-lg' onClick={()=>{transitOrder({cartItems}); GoToCeroProducts();}}>Send Order</button>
             </div>
         </div>
     );

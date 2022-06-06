@@ -32,12 +32,12 @@ export default function Waiter() {
           client: values.clientName,
           userId: userActive.user.id,
           status: 'pending',
-          dateEntry: new Date().toLocaleString('sv'),
+          dateEntry: new Date().toLocaleString('sv').slice(0, -3),
           products: cartItems.map((e)=>{
             return {
               amount: e.amount,
               product: {
-                dateEntry: new Date().toLocaleString('sv'),
+                dateEntry: new Date().toLocaleString('sv').slice(0, -3),
                 id: e.id,
                 image: e.image,
                 name: e.name,
