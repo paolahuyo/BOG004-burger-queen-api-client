@@ -9,7 +9,6 @@ export default function Kitchen() {
   const [orders, setOrders] = useState([]);
 
   const handleClick =  (id) => {
-    console.log("holi")
      updateOrder (id, {
       status: 'delivered',
       dateProcessed: new Date().toLocaleString('sv')

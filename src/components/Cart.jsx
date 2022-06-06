@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { Link } from 'react-router-dom';
 import takeAwayOrder from '../assets/order.png'
 import CartContext from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css'
 import ItemCart from "./ItemCart";
-import sendIcon from  '../assets/send-dish-kitchen.png'
+import { createOrder } from "../api/Products";
+import { getLoggedUser } from "../api/api";
 
-const Cart = ({transitOrder}) => {
-
+const Cart = () => {
      /* Creamos un estado para obtener la cantidad de productos que tenemos en el carrito */
     const [productsLenght, setProductsLength] = useState(0);
 
@@ -28,9 +29,66 @@ const Cart = ({transitOrder}) => {
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
 
+    const clientRef = useRef();
+
+    const [values, setValues] = useState({
+        clientName: " ",
+    });
+  
+    const handleClient = (e) => {
+      const newValues = {
+        ...values,
+        [e.target.name]: e.target.value,
+        };
+        setValues(newValues);
+        console.log(newValues)
+    }
+
+    const transitOrder = ({cartItems}) => {
+        const userActive = getLoggedUser();
+          createOrder({
+              client: values.clientName,
+              userId: userActive.user.id,
+              status: 'pending',
+              dateEntry: new Date().toLocaleString('sv').slice(0,-3),
+              products: cartItems.map((e)=>{
+                return {
+                  amount: e.amount,
+                  product: {
+                    dateEntry: new Date().toLocaleString('sv').slice(0,-3),
+                    id: e.id,
+                    image: e.image,
+                    name: e.name,
+                    price: e.price,
+                    type: e.type
+                  }
+                }
+              })
+            }).then((res) => {
+              console.log(res.data)
+            })
+            .catch()
+      }
+
     return (
         <div className={styles.cartContainer}>
             <div >
+            <div className={styles.divRight}>
+            <form id='client' style={{margin:20}}>
+                <label className={styles.Label} htmlFor="client">Client Name: </label>
+                <input className={styles.Input} type="text"
+                  ref={clientRef}
+                  id='clientName'
+                  name='clientName'
+                  placeholder='The Client Name'
+                  value={values.clientName}
+                  required
+                  onChange={handleClient}
+                  data-testid="test-client-name"
+                />
+            </form>
+            {values.clientName && <p className={styles.p} ref={clientRef} aria-live="assertive" data-testid="client-name-message">Client: {values.clientName}</p>}
+            </div>
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 80 }} />
                     <p className={styles.p}># Products: {productsLenght} items</p>
@@ -60,7 +118,8 @@ const Cart = ({transitOrder}) => {
                         </tr>
                     </tfoot>
                     </table>
-                    <button className='btn btn-info btn-lg' onClick={()=>{transitOrder({cartItems}); GoToCeroProducts();}}>Send Order</button>
+                    <button type="submit" className='btn btn-info btn-lg' onClick={ (e)=> {handleClient(e); transitOrder({cartItems})} }>Send Order</button>
+                    <Link to="/">Sign Out</Link>
             </div>
         </div>
     );
