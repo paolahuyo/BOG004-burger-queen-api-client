@@ -1,6 +1,5 @@
 import React from 'react'
 import {render, fireEvent, waitFor, screen} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import Login from './Login'
 import { createMemoryHistory } from 'history'
@@ -27,15 +26,66 @@ it('Componente login', async () => {
     expect(errMsg.textContent).toBe('The email or password is wrong')
 });
 
-// it("User login whitout errors", () =>{
-//     render(<Login />);
+it("User login whitout errors", async () =>{
+    const history = createMemoryHistory()
+    const  { debug } = render(
+        <Router location={history.location} navigator={history}>
+            <Login />
+        </Router>
+    )
 
-//     userEvent.type(screen.getByPlaceholderText('Email'), 'grace.hopper@burguers.com');
-//     userEvent.type(screen.getAllByPlaceholderText('Password'), '123456');
+    const emailInput = screen.getByPlaceholderText('Email')
+    const pswInput = screen.getByPlaceholderText('Password')
+    fireEvent.change(emailInput, {target: {value: 'grace.hopper@burguers.com'}})
+    fireEvent.change(pswInput, {target: {value: '123456'}})
+    const btnLogin = screen.getByText('Log In')
+    fireEvent.click(btnLogin)
+    await waitFor(() =>{
+        debug()
+        expect(history.location.pathname).toBe("/admin")
+    })
 
-//     userEvent.click(screen.getAllByRole('button'), {name: 'Log In'});
+})
 
-//     expect(screen)
+it("User login whitout errors", async () =>{
+    const history = createMemoryHistory()
+    const  { debug } = render(
+        <Router location={history.location} navigator={history}>
+            <Login />
+        </Router>
+    )
+
+    const emailInput = screen.getByPlaceholderText('Email')
+    const pswInput = screen.getByPlaceholderText('Password')
+    fireEvent.change(emailInput, {target: {value: 'burguerwaiter@burguers.com'}})
+    fireEvent.change(pswInput, {target: {value: '123456'}})
+    const btnLogin = screen.getByText('Log In')
+    fireEvent.click(btnLogin)
+    await waitFor(() =>{
+        debug()
+        expect(history.location.pathname).toBe("/waiter")
+    })
+
+})
+
+it("User login whitout errors", async () =>{
+    const history = createMemoryHistory()
+    const  { debug } = render(
+        <Router location={history.location} navigator={history}>
+            <Login />
+        </Router>
+    )
+
+    const emailInput = screen.getByPlaceholderText('Email')
+    const pswInput = screen.getByPlaceholderText('Password')
+    fireEvent.change(emailInput, {target: {value: 'burguerchef@burguers.com'}})
+    fireEvent.change(pswInput, {target: {value: '123456'}})
+    const btnLogin = screen.getByText('Log In')
+    fireEvent.click(btnLogin)
+    await waitFor(() =>{
+        debug()
+        expect(history.location.pathname).toBe("/kitchen")
+    })
 
 // })
 

@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { CartProvider } from '../Context/CartContext';
 import styles from '../components/stylesheets/Waiter.module.css';
 import logo from '../assets/logo-burger-queen.png';
