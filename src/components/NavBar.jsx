@@ -5,14 +5,14 @@ import styles from '../components/stylesheets/Waiter.module.css';
 
 const NavBar = () => {
   return (
-    <div>
+    <div className="navbar navbar-dark sticky-top d-flex flex-row" style={{backgroundColor: '#17a2b8'}}>
       <img src={logo} className={styles.Logo} alt="logo" />
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <Link class="nav-link active" to="/waiter">Create Order</Link>
+          <Link class="nav-link active text-white" to="/waiter">Create Order</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link" to="/ready-orders">Orders Ready</Link>
+          <Link class="nav-link text-white" to="/ready-orders">Orders Ready</Link>
         </li>
      </ul>
     </div>

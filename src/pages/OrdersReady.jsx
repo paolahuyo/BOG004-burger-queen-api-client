@@ -5,7 +5,7 @@ import styles from '../components/stylesheets/Waiter.module.css';
 import NavBar from '../components/NavBar';
 
 const OrdersReady = () => {
-     
+    
 const [ordersCooked, setOrdersCooked] = useState([]);
 
 const getOrdersCooked = () => {
