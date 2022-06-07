@@ -14,6 +14,9 @@ const NavBar = () => {
         <li class="nav-item">
           <Link class="nav-link text-white" to="/ready-orders">Orders Ready</Link>
         </li>
+        <li class="nav-item">
+          <Link class="nav-link text-white" to="/closed-orders">Orders Closed</Link>
+        </li>
      </ul>
     </div>
   )

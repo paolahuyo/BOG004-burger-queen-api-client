@@ -42,36 +42,38 @@ export default function Kitchen() {
   if (orders !== undefined && orders[0] !== undefined)
   return (
     <CartProvider>
-      <section className={styles.Box}>
-        <h1>Kitchen</h1>
-        {orders.map((order) => (
-          <section className='all-cards' key={order.id}>
-          <div className='card wd-40'>
-            <h3 className={styles.Orderstext}>ORDER #{order.id}</h3>
-            <div className='card-body'>
-              <h6 className={styles.Orderstext}>Client: {order.client}</h6>
-              <p className={styles.Orderstext}>{order.status}</p>
-              {order.dateProcessed && 
-              <p className={styles.Delivered}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>}
-              <p className={styles.Orderstext}> Created: {order.dateEntry}</p>
-              <ul className="list-group list-group-flush">
-              <h6 className={styles.Orderstext}>Products</h6>
-                {order.products.map((item) => (
-                  <li className="list-group-item">{item.product.name} {item.amount} Un ${item.product.price}</li>
-                ))}
-              </ul>
-              {!order.dateProcessed &&
-              <div className='card-body'>
-                <button className="btn btn-primary" onClick={()=> handleClick(order.id)}>READY TO DELIVER</button>
+      <h1 className={styles.h1}>Kitchen</h1>
+      <section className={styles.ContainerOrders}>
+        <div className='card-deck'>
+          {orders.map((order) => (
+            <section key={order.id}>
+              <div className='card' style={{ minWidth: 400, minHeight: 500, marginBottom: 20 }}>
+                <h3 className={styles.Orderstext}>ORDER #{order.id}</h3>
+                <div className='card-body'>
+                  <h6 className={styles.Orderstext}>Client: {order.client}</h6>
+                  <p className={styles.Orderstext}>{order.status}</p>
+                  {order.dateProcessed && 
+                  <p className={styles.Delivered}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>}
+                  <p className={styles.Orderstext}> Created: {order.dateEntry}</p>
+                  <ul className="list-group list-group-flush">
+                  <h6 className={styles.Orderstext}>Products</h6>
+                    {order.products.map((item) => (
+                      <li className="list-group-item">{item.product.name} {item.amount} Un ${item.product.price}</li>
+                    ))}
+                  </ul>
+                  {!order.dateProcessed &&
+                  <div className='card-body'>
+                    <button className="btn btn-primary" onClick={()=> handleClick(order.id)}>READY TO DELIVER</button>
+                  </div>
+                  }
+                </div>
               </div>
-              }
-            </div>
+            </section>
+          ))}
+          <div className={styles.SectionTotal}>
+            <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link className={styles.Link} to="/">Sign Out</Link></button>
           </div>
-          </section>
-        ))}
-        <p>
-          <Link to="/">Sign Out</Link>
-        </p>
+        </div>
       </section>
     </CartProvider>
     );

@@ -122,7 +122,9 @@ const Cart = () => {
                     </tfoot>
                     </table>
                     <button type="submit" className='btn btn-info btn-lg' onClick={ (e)=> {handleClient(e); transitOrder({cartItems}); GoToCeroProducts()} }>Send Order</button>
-                    <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link to="/">Sign Out</Link></button>
+                    <div className={styles.SectionTotal}>
+                        <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link className={styles.Link} to="/">Sign Out</Link></button>
+                    </div>
             </div>
         </div>
     );

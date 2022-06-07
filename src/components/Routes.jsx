@@ -7,6 +7,7 @@ import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
 import { getLoggedUser } from "../api/api";
 import OrdersReady from "../pages/OrdersReady";
+import OrdersClosed from "../pages/OrdersClosed";
 
 const router = () => {
 
@@ -36,9 +37,8 @@ const router = () => {
           }/>
 
           <Route path='/404' element={<NotFound/>} />
-
           <Route path='/ready-orders' element={<OrdersReady/>} />
-
+          <Route path='/closed-orders' element={<OrdersClosed/>} />
         </Routes>
     </Router>
   );
