@@ -13,7 +13,7 @@ export default function Waiter() {
         <div className={styles.Bigbox}>
           <div id='menu'>
             <h1 className={styles.h1}>Menu</h1>
-            <Card/>
+            <Card data-testid="card-show"/>
           </div>
           <div className={styles.divRight}>
             <Cart/>
