@@ -44,15 +44,16 @@ const getOrdersCooked = () => {
         <>
         <NavBar></NavBar>
         <h1 className={styles.h1}>Orders Ready</h1>
+        <section className='container'>
         <div className='card-deck'>
             {ordersCooked.map((order) => (
-            <section key={order.id}>
-                <div className='card' style={{ minWidth: 400, minHeight: 500, marginBottom: 20 }}>
-                    <h3 className={styles.Orderstext}>ORDER #{order.id}</h3>
+            <section className='col-md-4' key={order.id}>
+                <div className='card' style={{ marginBottom: 30 }}>
                     <div className='card-body'>
+                    <h3 className={styles.Orderstext}>ORDER #{order.id}</h3>
                         <h6 className={styles.Orderstext}>Client: {order.client}</h6>
-                        <p className={styles.Orderstext}>{order.status}</p>
-                        <p className={styles.Delivered}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>
+                        <p className={styles.Ready}>{order.status}</p>
+                        <p className={styles.Ready}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>
                         <p className={styles.Orderstext}> Created: {order.dateEntry}</p>
                         <ul className="list-group list-group-flush">
                         <h6 className={styles.Orderstext}>Products</h6>
@@ -68,9 +69,10 @@ const getOrdersCooked = () => {
             </section>
             ))}
             <div className={styles.SectionTotal}>
-                <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link className={styles.Link} to="/">Sign Out</Link></button>
+            <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link className={styles.Link} to="/">Sign Out</Link></button>
             </div>
         </div>
+        </section>
         </>
         );
 }

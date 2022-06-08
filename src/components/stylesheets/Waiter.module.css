@@ -58,8 +58,19 @@ Li{
   color: white;
 }
 
+.Sent{
+  color: #FFCF6E;
+}
 .Delivered{
   color: green ;
+}
+
+.Closed{
+  color: red;
+}
+
+.Ready{
+  color: #17a2b8;
 }
 
 .Orderstext{
@@ -141,3 +152,6 @@ Li{
 
 }
 
+#ad{
+  color: #9af2ff;
+}

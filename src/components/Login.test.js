@@ -26,7 +26,7 @@ it('Componente login', async () => {
     expect(errMsg.textContent).toBe('The email or password is wrong')
 });
 
-it("User login whitout errors", async () =>{
+it("Admin user login without errors", async () =>{
     const history = createMemoryHistory()
     const  { debug } = render(
         <Router location={history.location} navigator={history}>
@@ -47,7 +47,7 @@ it("User login whitout errors", async () =>{
 
 })
 
-it("User login whitout errors", async () =>{
+it("Waiter user login without errors", async () =>{
     const history = createMemoryHistory()
     const  { debug } = render(
         <Router location={history.location} navigator={history}>
@@ -68,7 +68,7 @@ it("User login whitout errors", async () =>{
 
 })
 
-it("User login whitout errors", async () =>{
+it("Chef user login without errors", async () =>{
     const history = createMemoryHistory()
     const  { debug } = render(
         <Router location={history.location} navigator={history}>

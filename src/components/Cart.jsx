@@ -23,12 +23,12 @@ const Cart = () => {
 
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
-
     const clientRef = useRef();
-
     const [values, setValues] = useState({
         clientName: " ",
     });
+
+    const[ordersSended, setOrdersSended] = useState(false);
     
     const handleClient = (e) => {
       const newValues = {
@@ -59,7 +59,11 @@ const Cart = () => {
                 }
               })
             }).then((res) => {
-              console.log(res.data)
+                setOrdersSended(true);
+                setTimeout(() => {
+                    setOrdersSended(false);
+                }, 10000);
+                console.log('order created',res.data)
             })
             .catch()
       }
@@ -70,7 +74,7 @@ const Cart = () => {
             clientName: " ",
         });
         resetCart();
-		return console.log(productsLenght, cartItems);
+		return console.log('cartItems', cartItems);
 	}
 
     return (
@@ -121,6 +125,7 @@ const Cart = () => {
                         </tr>
                     </tfoot>
                     </table>
+                    {ordersSended && <p className={styles.Sent} aria-live="assertive" data-testid="sended-order-message">The order was sent to the kitchen</p>}
                     <button type="submit" className='btn btn-info btn-lg' onClick={ (e)=> {handleClient(e); transitOrder({cartItems}); GoToCeroProducts()} }>Send Order</button>
                     <div className={styles.SectionTotal}>
                         <button className='btn btn-info btn-lg' style={{width:300, alignSelf:'center'}}><Link className={styles.Link} to="/">Sign Out</Link></button>
