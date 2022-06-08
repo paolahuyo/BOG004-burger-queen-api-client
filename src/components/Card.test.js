@@ -1,7 +1,10 @@
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+<<<<<<< HEAD
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+=======
+>>>>>>> 3e525248 (Haciendo test de login)
 import { callProducts } from "../api/Products.js";
 import '@testing-library/jest-dom';
 
