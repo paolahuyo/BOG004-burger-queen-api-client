@@ -1,9 +1,14 @@
 import React from 'react';
+import { Router } from 'react-router-dom'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { CartProvider } from '../Context/CartContext';
 import { callProducts } from "../api/Products.js";
-import '@testing-library/jest-dom';
+import { addItemToCart } from '../Context/CartContext';
+import Card from '../components/Card'
 
 sessionStorage.user = JSON.stringify({
     accessToken: 'tokenfortest',
@@ -27,7 +32,9 @@ sessionStorage.user = JSON.stringify({
     })
   );
 
-  beforeAll(() => server.listen());
+  beforeAll(() => server.listen())
+  afterEach(() => server.resetHandlers())
+  afterAll(() => server.close())
 
   it('response of products to NewOrder component', async () => {
     const activeSession = JSON.parse(sessionStorage.user);
@@ -43,6 +50,28 @@ sessionStorage.user = JSON.stringify({
       },
     ];
 
-    const productTestResult = await callProducts(activeSessionToken);
+    let productTestResult = [];
+
+    await callProducts(activeSessionToken).then((res) => {
+      productTestResult = res.data;
+    })
     expect(productTestResult).toEqual(productListTest);
   });
+
+  it('Testing the elements inside Card', async () => {
+
+    const history = createMemoryHistory()
+    const { debug } = render(
+        <Router location={history.location} navigator={history}>
+            <CartProvider>
+              <Card/>
+            </CartProvider>
+        </Router>
+    )
+
+    const btnAddToCart = screen.getByText('Add To Cart')
+    await waitFor(() =>{
+      debug();
+      expect(btnAddToCart).toBeInTheDocument();
+    })
+  })

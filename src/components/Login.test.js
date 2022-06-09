@@ -87,5 +87,5 @@ it("Chef user login without errors", async () =>{
         expect(history.location.pathname).toBe("/kitchen")
     })
 
-// })
+})
 
