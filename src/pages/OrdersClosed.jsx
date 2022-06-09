@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getOrder, updateOrder } from '../api/Products';
+import { getOrder } from '../api/Products';
 import styles from '../components/stylesheets/Waiter.module.css';
 import NavBar from '../components/NavBar';
 
@@ -28,7 +28,6 @@ const getOrdersClosed = () => {
         const restTime = (Date.parse(dateNow) - Date.parse(dateOrder))/1000/60;
         return restTime;
       }
-
 
     if (ordersClosed !== undefined && ordersClosed[0] !== undefined)
     return (

@@ -1,3 +1,8 @@
+.card {
+    min-height: 500px !important;
+    min-width: 300px !important;
+}
+
 .card:hover{
     box-shadow: 5px 10px 20px 1px rgba(145, 187, 194, 0.707) !important;
     transform: scale(1.05) !important;
@@ -5,4 +10,10 @@
 
 .btn{
     margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.col-md-4{
+    padding-right: 0;
+    padding-left: 0;
 }

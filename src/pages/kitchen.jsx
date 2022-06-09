@@ -31,7 +31,7 @@ export default function Kitchen() {
 
   const handleCancel =  (id) => {
     updateOrder (id, {
-     status: 'canceled'
+     status: 'cancelled'
    }).then((res) => {
        getListOrders();
       console.log(res.data)
@@ -62,7 +62,7 @@ export default function Kitchen() {
                 <h3 className={styles.Orderstext}>ORDER #{order.id}</h3>
                   <h6 className={styles.Orderstext}>Client: {order.client}</h6>
                   <p className={styles.Orderstext}>{order.status}</p>
-                  {order.status === 'canceled' && <p className={styles.Closed}>ORDER {order.status}</p>}
+                  {order.status === 'cancelled' && <p className={styles.Closed}>ORDER {order.status}</p>}
                   {order.dateProcessed && 
                   <p className={styles.Delivered}>Delivered: {order.dateProcessed}<br/>Cooking time: {timeToDeliver(order)} min</p>}
                   <p className={styles.Orderstext}> Created: {order.dateEntry}</p>

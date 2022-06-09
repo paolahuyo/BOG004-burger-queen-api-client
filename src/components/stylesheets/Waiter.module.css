@@ -77,8 +77,7 @@ Li{
   color:#080710;
 }
 
-.h1, .p{
-    font-family: 'Poppins',sans-serif;
+.p{
     color: #ffffff;
     letter-spacing: 0.5px;
     font-size: 24px;
@@ -87,6 +86,17 @@ Li{
     text-align: center;
     place-self: center;
   }
+
+.h1{
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+  place-self: center;
+  margin: 30px 0;
+} 
 
 .divRight{
   display: flex;
