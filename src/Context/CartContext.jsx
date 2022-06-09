@@ -2,6 +2,23 @@ import React, { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
+const addItemToCartTest = (cartItems, product) => {
+    const inCart = cartItems.find(
+    (productInCart)=> productInCart.id === product.id
+    );
+    if(inCart){
+            return cartItems.map((productInCart)=>{
+                if(productInCart.id === product.id){
+                    return{...inCart, amount:inCart.amount + 1};
+                } else return productInCart;
+            })
+    } else {
+        return [...cartItems,{...product, amount:1}];
+    }
+}
+
+
+
 export const CartProvider = ({children}) => {
 
     const [cartItems, setCartItems] = useState (() => {
@@ -23,20 +40,9 @@ export const CartProvider = ({children}) => {
     }
 
     const addItemToCart = (product) => {
-        const inCart = cartItems.find(
-        (productInCart)=> productInCart.id === product.id
-        );
-        if(inCart){
-            setCartItems(
-                cartItems.map((productInCart)=>{
-                    if(productInCart.id === product.id){
-                        return{...inCart, amount:inCart.amount + 1};
-                    } else return productInCart;
-                })
-            );
-        } else {
-        setCartItems([...cartItems,{...product, amount:1}]);
-        }
+        const newState = addItemToCartTest(cartItems, product)
+       
+        setCartItems(newState);
     }
 
     const deleteItemToCart = (product) => {

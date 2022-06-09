@@ -8,45 +8,6 @@ import axios from 'axios';
 
 // npm test -- login.test.js
 
-const mockUseNavigate = jest.fn();
-jest.mock("react-router-dom", () => ({
-    ...(jest.requireActual("react-router-dom")),
-    useNavigate: () => mockUseNavigate,
-}));
-
-const userMock = {};
-const dispatchMock = () => { };
-
-test('toAccess', async () => {
-    axios.post.mockResolvedValue({
-        data: {
-            accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1cmd1ZXJ3YWl0ZXJAYnVyZ3VlcnMuY29tIiwiaWF0IjoxNjU0NjIzNjM2LCJleHAiOjE2NTQ2MjcyMzYsInN1YiI6IjMifQ.Yo3LoRg1w4LmIZseiW53MdfY7WMLQK8XFhtfGdOLspY",
-            user: {
-                email: "grace.hopper@burguers.com",
-                roles: {
-                    admin: true
-                },
-                id: 2
-            }
-        }
-    });
-    const history = createMemoryHistory()
-    const { debug } = render(
-        <Router location={history.location} navigator={history} value={{
-            user: userMock,
-            dispatch: dispatchMock
-        }}>
-            < Login />
-        </Router>
-    );
-
-    fireEvent.click(screen.getByRole("button"));
-    await waitFor(() => {
-        debug()
-        expect(mockUseNavigate).toHaveBeenCalledWith("/admin", { replace: true });
-    });
-});;
-
 
 it('Componente login', async () => {
     const history = createMemoryHistory()
