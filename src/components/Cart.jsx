@@ -101,7 +101,7 @@ const Cart = () => {
                     <p className={styles.p}># Products: {productsLenght } items</p>
                 </div>
             </div>
-            <div>
+            <div className='container'>
                 <h3>Order Cart</h3>
                 <table className="table table-striped table-dark table-hover">
                 <thead>

@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo-burger-queen.png';
 import styles from '../components/stylesheets/Waiter.module.css';
+import '../components/stylesheets/BootstrapEdit.css';
 
 const NavBar = () => {
   return (
-    <div className="navbar navbar-dark sticky-top d-flex flex-row" style={{backgroundColor: '#17a2b8'}}>
+    <nav className="navbar navbar-dark sticky-top d-flex flex-row" style={{backgroundColor: '#17a2b8'}}>
       <img src={logo} className={styles.Logo} alt="logo" />
-      <ul className="nav justify-content-end">
+      <ul className="nav align-middle">
         <li className="nav-item">
           <Link className="nav-link active text-white" to="/waiter">Create Order</Link>
         </li>
@@ -21,7 +22,7 @@ const NavBar = () => {
           <Link className="nav-link text-white" to="/cancelled-orders">Orders Cancelled</Link>
         </li>
      </ul>
-    </div>
+    </nav>
   )
 }
 
