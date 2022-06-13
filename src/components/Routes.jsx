@@ -9,6 +9,8 @@ import { getLoggedUser } from "../api/api";
 import OrdersReady from "../pages/OrdersReady";
 import OrdersClosed from "../pages/OrdersClosed";
 import OrdersCancelled from "../pages/OrdersCancelled";
+import CreateUsers from "../pages/CreateUsers";
+import EditUsers from "../pages/EditUsers"
 
 const router = () => {
 
@@ -41,6 +43,8 @@ const router = () => {
           <Route path='/ready-orders' element={<OrdersReady/>} />
           <Route path='/closed-orders' element={<OrdersClosed/>} />
           <Route path='/cancelled-orders' element={<OrdersCancelled/>} />
+          <Route path='/createUsers' element={<CreateUsers/>} />
+          <Route path='/edit-Users' element={<EditUsers/>} />
         </Routes>
     </Router>
   );
