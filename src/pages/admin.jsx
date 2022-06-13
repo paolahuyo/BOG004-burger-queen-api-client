@@ -6,7 +6,7 @@ import CreateUsers from './CreateUsers';
 export default function Admin() {
   return (
     <div className="container">
-      <NavBarAdmin />
+      {/* <NavBarAdmin /> */}
       <CreateUsers />
       <p>
         <Link to="/">login</Link>

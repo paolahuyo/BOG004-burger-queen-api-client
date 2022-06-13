@@ -1,86 +1,41 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { createUser } from "../api/api";
 
-const CreateUsers = ({edit, success,  userData}) => {
-  const channel = useMemo(() => new BroadcastChannel("user"), []);
+const CreateUsers = () => {
 
-  const [hasError, setHasError] = useState("");
   const [message, setMessage] = useState("");
+  const [hasError, setHasError] = useState("");
 
-  const [values, setValues] = useState(userData || {
-    // estado para guardar los datos del form
-    name: "",
-    email: "",
-    password: "",
-    roles: "",
-  });
-
-  const user = {
-    name: values.name,
-    email: values.email,
-    password: values.password,
-    roles: values.roles,
-  };
-
-  
-  const startRegister = async (e) => {
-    e.preventDefault();
-    // funcion para iniciar sesion, (se llama con el handleSumbmit)
-    try {
-      await createUser(user).then((response) => {
-        channel.postMessage("registerUser");
-        setMessage("Usuario creado correctamente");
-      }); // llamada a la funcion login de la api
-    } catch {
-      setHasError("El usuario ya está registrado");
-    }
-    setTimeout(() => {
-      setMessage(null);
-    }, 1500);
-    setValues({
-      name: "",
+  const [values, setValues] = useState({
       email: "",
       password: "",
-      roles: "",
-    });
+      roles: ""
+  });
+  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await createUser(values);
+      const { user } = response.data;
+      setMessage("Usuario creado correctamente");
+      console.log(user)
+    } catch (error) {
+      setHasError("El usuario ya está registrado");
+      console.error(error);
+    }
   };
-
-  useEffect(() => {
-    return () => channel.close();
-  }, [channel]);
 
   const handleChange = (e) => {
-    // funcion para guardar los datos del formulario
-    const { target } = e;
-    const { name, value } = target;
-
     const newValues = {
-      // nuevo estado con los datos del formulario
-      ...values, // estado anterior
-      [name]: value, // nuevo valor
+    ...values,
+    [e.target.name]: e.target.value,
     };
-    setValues(newValues); // actualizar el estado
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    setValues(newValues);
+  }
 
   return (
     <div>
-      <form className="form-workers" onSubmit={handleSubmit}>
-        <div>
-        <p>name</p>
-          <input
-            id="name"
-            type="name"
-            name="name"
-            placeholder="Nombre"
-            className="name-worker"
-            value={values.name}
-            onChange={handleChange} // cuando se cambia el valor del input
-            data-testid="name-worker"
-          />
-        </div>
+      <form className="form-workers" onSubmit={submitHandler}>
         <div>
             <p>Email</p>
           <input
@@ -90,8 +45,8 @@ const CreateUsers = ({edit, success,  userData}) => {
             placeholder="Correo Electrónico"
             className="email-worker"
             value={values.email}
-            onChange={handleChange} // cuando se cambia el valor del input
             data-testid="email-worker"
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -103,33 +58,32 @@ const CreateUsers = ({edit, success,  userData}) => {
             placeholder="Contraseña"
             className="password-worker"
             value={values.password}
-            onChange={handleChange} // cuando se cambia el valor del input
             data-testid="password-worker"
+            onChange={handleChange}
           />
-            {/* <span>{errors.password.message}</span> */}
         </div>
 
         <div>
             roles
-          <input
-            id="roles" // input para el password
-            type="name"
+          <select
+            id="roles"
             name="roles"
             placeholder="Rol"
             className="roles-worker"
             value={values.roles}
-            onChange={handleChange} // cuando se cambia el valor del input
             data-testid="roles-worker"
-          />
+            onChange={handleChange}
+          >
+          <option value="0">Rol</option>
+          <option value="admin">Administrator</option>
+          <option value="chef">Chef</option>
+          <option value="waiter">Waiter</option>
+        </select>
         </div>
-          <button type="submit" className="btn-register" onClick={startRegister}>REGISTRAR</button>
-        {hasError && (
-            <p>{hasError}</p>
-        )}
+          <button type="submit" className="btn-register">REGISTRAR</button>
       </form>
-      {message && (
-        <p>{message}</p>
-      )}
+      {hasError}
+      {message}
     </div>
   );
 };
