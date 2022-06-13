@@ -59,7 +59,6 @@ sessionStorage.user = JSON.stringify({
   });
 
   it('Testing the elements inside Card', async () => {
-
     const history = createMemoryHistory()
     const { debug } = render(
         <Router location={history.location} navigator={history}>
@@ -69,9 +68,9 @@ sessionStorage.user = JSON.stringify({
         </Router>
     )
 
-    const btnAddToCart = screen.getByText('Add To Cart')
     await waitFor(() =>{
       debug();
+      const btnAddToCart = screen.getByText('Add To Cart')
       expect(btnAddToCart).toBeInTheDocument();
     })
   })
