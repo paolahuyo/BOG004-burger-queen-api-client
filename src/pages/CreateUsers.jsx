@@ -9,7 +9,11 @@ const CreateUsers = () => {
   const [values, setValues] = useState({
       email: "",
       password: "",
-      roles: ""
+      roles:{
+        admin: false,
+        waiter: false,
+        chef: false
+      }
   });
   
   const submitHandler = async (e) => {
@@ -70,14 +74,13 @@ const CreateUsers = () => {
             name="roles"
             placeholder="Rol"
             className="roles-worker"
-            value={values.roles}
             data-testid="roles-worker"
             onChange={handleChange}
           >
           <option value="0">Rol</option>
-          <option value="admin">Administrator</option>
-          <option value="chef">Chef</option>
-          <option value="waiter">Waiter</option>
+          <option value={{roles:{admin:true}}}>Administrator</option>
+          <option value={{roles:{chef:true}}}>Chef</option>
+          <option value={{roles:{waiter:true}}}>Waiter</option>
         </select>
         </div>
           <button type="submit" className="btn-register">REGISTRAR</button>
