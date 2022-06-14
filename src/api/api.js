@@ -29,7 +29,11 @@ const updateUser = (id, update) =>{
     })
 }
 
+<<<<<<< HEAD
 const deleteUsers = (id) =>{
+=======
+const deleteUser = (id) =>{
+>>>>>>> 4431672c (creando nuevos test)
     return axios.delete(BASE_URL+"user/"+id,{
         headers:{
             "content-type": "application/json",
@@ -66,6 +70,10 @@ const saveProduct = (product) => {
 
 export {
     login,
+<<<<<<< HEAD
+=======
+    getUser,
+>>>>>>> 4431672c (creando nuevos test)
     saveUser,
     createUser,
     getLoggedUser,
@@ -74,7 +82,12 @@ export {
     createProduct,
     saveProduct,
     getId,
+<<<<<<< HEAD
     getUser,
     updateUser,
     deleteUsers
+=======
+    updateUser,
+    deleteUser
+>>>>>>> 4431672c (creando nuevos test)
 }
