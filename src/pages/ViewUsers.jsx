@@ -39,7 +39,7 @@ function ViewUsers() {
 	return (
         <>
         <NavBarAdmin></NavBarAdmin>
-        <div className='container d-flex flex-column justify-content-center align-items-center h-100' style={{marginTop: 40}}>
+        <div className='container d-flex flex-column justify-content-center align-items-center h-100' style={{marginTop:40}}>
             {users.map((user)=>(
                 <div className='' key={user.id}>
                 <ul className=''>

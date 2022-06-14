@@ -92,9 +92,9 @@ const CreateUsers = () => {
         </div>
           <button type="submit" className={styles.LoginButton}  name="submitRegister">Register</button>
       </form>
-      {hasError && <p ref={hasError} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{hasError}</p>}
+      <p className={styles.LoginFormEr} data-testid="login-error-message">{hasError}</p>
       {/* {hasError} */}
-      {message && <p ref={message} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{message}</p>}
+      <p className={styles.LoginFormEr} data-testid="login-error-message">{message}</p>
       {/* {message} */}
     </div>
   );
