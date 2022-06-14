@@ -2,15 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarAdmin from '../components/NavBarAdmin';
 import CreateUsers from './CreateUsers';
+import styles from '../components/stylesheets/Waiter.module.css'
 
 export default function Admin() {
   return (
-    <div className="container">
-      {/* <NavBarAdmin /> */}
-      <CreateUsers />
+    <>
+    <NavBarAdmin></NavBarAdmin>
+    <div className='container d-flex flex-column justify-content-center align-items-center h-100'>
+      <CreateUsers/>
       <p>
-        <Link to="/">login</Link>
+      <button className='btn btn-info btn-lg' style={{marginTop: 40, width:300, alignSelf:'center'}}><Link to="/">login</Link></button>
       </p>
     </div>
+
+    </>
   );
 }

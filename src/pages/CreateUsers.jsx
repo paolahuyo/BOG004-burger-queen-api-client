@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createUser } from "../api/api";
+import styles from "../components/stylesheets/Home.module.css";
 
 const CreateUsers = () => {
 
@@ -9,9 +10,9 @@ const CreateUsers = () => {
   const [values, setValues] = useState({
       email: "",
       password: "",
-      roles: ""
+      roles: { }
   });
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -26,6 +27,16 @@ const CreateUsers = () => {
   };
 
   const handleChange = (e) => {
+    console.log(e.target.value, 'values', values)
+    const newValues = {
+      ...values,
+      roles: { },
+    };
+    newValues.roles[e.target.value]=true
+    setValues(newValues);
+  }
+
+  const handleInput = (e) => {
     const newValues = {
     ...values,
     [e.target.name]: e.target.value,
@@ -35,55 +46,56 @@ const CreateUsers = () => {
 
   return (
     <div>
-      <form className="form-workers" onSubmit={submitHandler}>
+      <h3 style={{color:'white', margin:40}}>Admin Panel</h3>
+      <form className={styles.LoginForm} style={{height:'auto', alignSelf:'center', marginTop: 100}} onSubmit={submitHandler}>
+      <h3 className={styles.h3}>Register User</h3>
         <div>
-            <p>Email</p>
-          <input
+          <label className={styles.LoginLabel} htmlFor="email">Email</label>
+          <input className={styles.LoginInput}
             id="email"
             type="email"
             name="email"
-            placeholder="Correo Electrónico"
-            className="email-worker"
+            placeholder="Email"
             value={values.email}
             data-testid="email-worker"
-            onChange={handleChange}
+            required
+            onChange={handleInput}
           />
         </div>
         <div>
-        <p>password</p>
-          <input
+        <label className={styles.LoginLabel} htmlFor="pws">Password</label>
+          <input className={styles.LoginInput}
             id="password" // input para el password
             type="password"
             name="password"
-            placeholder="Contraseña"
-            className="password-worker"
+            placeholder="Password"
             value={values.password}
             data-testid="password-worker"
-            onChange={handleChange}
+            required
+            onChange={handleInput}
           />
         </div>
-
         <div>
-            roles
-          <select
+          <label className={styles.LoginLabel}>Role</label>
+          <select className='form-select form-select-sm' aria-label=".form-select-sm example"
             id="roles"
             name="roles"
             placeholder="Rol"
-            className="roles-worker"
-            value={values.roles}
             data-testid="roles-worker"
-            onChange={handleChange}
-          >
-          <option value="0">Rol</option>
-          <option value="admin">Administrator</option>
-          <option value="chef">Chef</option>
-          <option value="waiter">Waiter</option>
+            value={Object.keys(values.roles)[0]}
+            onChange={handleChange}>
+          <option >Choose Rol</option>
+          <option value='admin'>Administrator</option>
+          <option value='chef'>Chef</option>
+          <option value='waiter'>Waiter</option>
         </select>
         </div>
-          <button type="submit" className="btn-register">REGISTRAR</button>
+          <button type="submit" className={styles.LoginButton}  name="submitRegister">Register</button>
       </form>
-      {hasError}
-      {message}
+      {hasError && <p ref={hasError} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{hasError}</p>}
+      {/* {hasError} */}
+      {message && <p ref={message} className={styles.LoginFormEr} aria-live="assertive" data-testid="login-error-message">{message}</p>}
+      {/* {message} */}
     </div>
   );
 };

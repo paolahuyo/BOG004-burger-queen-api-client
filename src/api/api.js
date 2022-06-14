@@ -14,8 +14,28 @@ const login = (payload) => {
     return axios.post(BASE_URL+'login', payload);
 }
 
-const getUsers = () => {
-    return axios.get(BASE_URL+'users');
+const getUser = () => {
+    return axios({method: "GET", url:BASE_URL+'users', headers: {
+        authorization: "Bearer " + getToken()
+    }} );
+}
+
+const updateUser = (id, update) =>{
+    return axios.patch(BASE_URL+"user/"+id, update,{
+        headers:{
+            "content-type": "application/json",
+            authorization: "Bearer" + getToken()
+        }
+    })
+}
+
+const deleteUser = (id) =>{
+    return axios.delete(BASE_URL+"user/"+id,{
+        headers:{
+            "content-type": "application/json",
+            authorization: "Bearer" + getToken()
+        }
+    })
 }
 
 const saveUser = (user) => {
@@ -46,7 +66,6 @@ const saveProduct = (product) => {
 
 export {
     login,
-    getUsers,
     saveUser,
     createUser,
     getLoggedUser,
@@ -54,5 +73,8 @@ export {
     getProducts,
     createProduct,
     saveProduct,
-    getId
+    getId,
+    getUser,
+    updateUser,
+    deleteUser
 }

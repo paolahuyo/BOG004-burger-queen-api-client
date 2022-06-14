@@ -10,7 +10,7 @@ import OrdersReady from "../pages/OrdersReady";
 import OrdersClosed from "../pages/OrdersClosed";
 import OrdersCancelled from "../pages/OrdersCancelled";
 import CreateUsers from "../pages/CreateUsers";
-import EditUsers from "../pages/EditUsers"
+import ViewUsers from "../pages/ViewUsers"
 
 const router = () => {
 
@@ -43,8 +43,8 @@ const router = () => {
           <Route path='/ready-orders' element={<OrdersReady/>} />
           <Route path='/closed-orders' element={<OrdersClosed/>} />
           <Route path='/cancelled-orders' element={<OrdersCancelled/>} />
-          <Route path='/createUsers' element={<CreateUsers/>} />
-          <Route path='/edit-Users' element={<EditUsers/>} />
+          <Route path='/createUsers' element={<Admin/>} />
+          <Route path='/viewUsers' element={<ViewUsers/>} />
         </Routes>
     </Router>
   );

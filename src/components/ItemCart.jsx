@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import CartContext from '../Context/CartContext';
 import plusIcon from '../assets/plus-white.png';
-import minusIcons from "../assets/minus-sign.png";
+import minusIcons from '../assets/minus-sign.png';
 
 const ItemCart = ({item}) => {
     
