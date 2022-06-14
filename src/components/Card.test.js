@@ -5,7 +5,14 @@ import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+<<<<<<< HEAD
 import { CartProvider } from '../Context/CartContext';
+=======
+<<<<<<< HEAD
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+=======
+>>>>>>> 3e525248 (Haciendo test de login)
+>>>>>>> 54476625a429db2308ae1fbce80bc7f0eb87729a
 import { callProducts } from "../api/Products.js";
 import { addItemToCart } from '../Context/CartContext';
 import Card from '../components/Card'
