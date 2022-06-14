@@ -3,34 +3,34 @@ import React, { createContext, useEffect, useState } from "react";
 export const CartContext = createContext();
 
 export const addItemToCartTest = (cartItems, product) => {
-    console.log("cartItems",cartItems)
-    console.log("product", product)
     const inCart = cartItems.find(
     (productInCart)=> productInCart.id === product.id
     );
     if(inCart){
-        console.log("inCart")
             return cartItems.map((productInCart)=>{
                 if(productInCart.id === product.id){
-                    console.log("aqui si debe entrar", {...inCart, amount:inCart.amount + 1})
                     return{...inCart, amount:inCart.amount + 1};
                 } else return productInCart;
             })
     } else {
-        console.log("camino malo")
+        console.log("se va por donde no es")
         return [...cartItems,{...product, amount:1}];
     }
 }
 
 export const deleteItemToCartTest = (cartItems, product) => {
+    console.log("cartItems",cartItems)
+    console.log("product", product)
     const inCart = cartItems.find(
         (productInCart) => productInCart.id === product.id
     );
     if (inCart) {
-           return cartItems.filter((productInCart) => productInCart.id !== product.id)
+        console.log("inCart")
+        return cartItems.filter((productInCart) => productInCart.id !== product.id)
     } else {
             return cartItems.map((productInCart) => {
                 if(productInCart.id === product.id ) {
+                    console.log("aqui si debe entrar", {...inCart, amount:inCart.amount - 1})
                     return {...inCart, amount: inCart.amount - 1}
                 } else return productInCart
             });
@@ -50,7 +50,7 @@ export const CartProvider = ({children}) => {
 
     useEffect(() => {
         localStorage.setItem('cartProducts', JSON.stringify(cartItems));
-        console.log(cartItems);
+        //console.log('cartItems',cartItems);
     }, [cartItems]);
 
     const resetCart = () => {

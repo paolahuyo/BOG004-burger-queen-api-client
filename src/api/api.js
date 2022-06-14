@@ -29,7 +29,7 @@ const updateUser = (id, update) =>{
     })
 }
 
-const deleteUser = (id) =>{
+const deleteUsers = (id) =>{
     return axios.delete(BASE_URL+"user/"+id,{
         headers:{
             "content-type": "application/json",
@@ -76,5 +76,5 @@ export {
     getId,
     getUser,
     updateUser,
-    deleteUser
+    deleteUsers
 }

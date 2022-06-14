@@ -7,70 +7,72 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { CartProvider } from '../Context/CartContext';
 import { callProducts } from "../api/Products.js";
-import { addItemToCart } from '../Context/CartContext';
 import Card from '../components/Card'
 
-sessionStorage.user = JSON.stringify({
-    accessToken: 'tokenfortest',
-  });
+describe('Card Component, card products', ()=> {
 
-  const server = setupServer(
-    rest.get('http://localhost:8080/products', (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json([
-          {
-            id: 1,
-            name: 'Sandwich de jamón y queso',
-            price: 1000,
-            image: 'https://banhmibaycafe.com.au/wp-content/uploads/2022/01/Sandwich.png',
-            type: 'Desayuno',
-            dataEntry: '2022-03-05 15:14:10'
-          },
-        ])
-      );
-    })
-  );
+  sessionStorage.user = JSON.stringify({
+      accessToken: 'tokenfortest',
+    });
 
-  beforeAll(() => server.listen())
-  afterEach(() => server.resetHandlers())
-  afterAll(() => server.close())
+    const server = setupServer(
+      rest.get('http://localhost:8080/products', (_req, res, ctx) => {
+        return res(
+          ctx.status(200),
+          ctx.json([
+            {
+              id: 1,
+              name: 'Sandwich de jamón y queso',
+              price: 1000,
+              image: 'https://banhmibaycafe.com.au/wp-content/uploads/2022/01/Sandwich.png',
+              type: 'Desayuno',
+              dataEntry: '2022-03-05 15:14:10'
+            },
+          ])
+        );
+      })
+    );
 
-  it('response of products to NewOrder component', async () => {
-    const activeSession = JSON.parse(sessionStorage.user);
-    const activeSessionToken = activeSession.accessToken;
-    let productListTest = [
-      {
-        id: 1,
-        name: 'Sandwich de jamón y queso',
-        price: 1000,
-        image: 'https://banhmibaycafe.com.au/wp-content/uploads/2022/01/Sandwich.png',
-        type: 'Desayuno',
-        dataEntry: '2022-03-05 15:14:10'
-      },
-    ];
+    beforeAll(() => server.listen())
+    afterEach(() => server.resetHandlers())
+    afterAll(() => server.close())
 
-    let productTestResult = [];
+    it('response of products to NewOrder component', async () => {
+      const activeSession = JSON.parse(sessionStorage.user);
+      const activeSessionToken = activeSession.accessToken;
+      let productListTest = [
+        {
+          id: 1,
+          name: 'Sandwich de jamón y queso',
+          price: 1000,
+          image: 'https://banhmibaycafe.com.au/wp-content/uploads/2022/01/Sandwich.png',
+          type: 'Desayuno',
+          dataEntry: '2022-03-05 15:14:10'
+        },
+      ];
 
-    await callProducts(activeSessionToken).then((res) => {
-      productTestResult = res.data;
-    })
-    expect(productTestResult).toEqual(productListTest);
-  });
+      let productTestResult = [];
 
-  it('Testing the elements inside Card', async () => {
-    const history = createMemoryHistory()
-    const { debug } = render(
-        <Router location={history.location} navigator={history}>
-            <CartProvider>
-              <Card/>
-            </CartProvider>
-        </Router>
-    )
+      await callProducts(activeSessionToken).then((res) => {
+        productTestResult = res.data;
+      })
+      expect(productTestResult).toEqual(productListTest);
+    });
 
-    await waitFor(() =>{
-      debug();
-      const btnAddToCart = screen.getByText('Add To Cart')
-      expect(btnAddToCart).toBeInTheDocument();
+    it('Testing the elements inside Card', async () => {
+      const history = createMemoryHistory()
+      const { debug } = render(
+          <Router location={history.location} navigator={history}>
+              <CartProvider>
+                <Card/>
+              </CartProvider>
+          </Router>
+      )
+
+      await waitFor(() =>{
+        debug();
+        const btnAddToCart = screen.getByText('Add To Cart')
+        expect(btnAddToCart).toBeInTheDocument();
+      })
     })
   })

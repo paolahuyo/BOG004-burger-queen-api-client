@@ -4,17 +4,9 @@ import { getUser } from "../api/api";
 import minusIcons from '../assets/minus-sign.png';
 import editIcon from '../assets/edit-icon.png';
 import NavBarAdmin from '../components/NavBarAdmin';
+import { deleteUsers } from '../api/api';
 
 function ViewUsers() {
-
-	// useEffect(() => {
-	// 	callProducts()
-	// 	.then((response) =>{
-	// 	//console.log(response.data);
-	// 	setProducts(response.data)
-	// 	})
-	// 	.catch(() =>{});
-	// }, []);
 
     const [users, setUsers] = useState([]);
 
@@ -32,8 +24,20 @@ function ViewUsers() {
 
     }
 
-    const deleteUser = () =>{
-        
+    const deleteUser = (users) =>{
+        // const viewedUsers = users.find(
+        //     (user) => users.id === user.id
+        // );
+        // if (viewedUsers) {
+        //        return users.filter((user) => user.id !== users.id)
+        // } else {
+        //         return users.map((user) => {
+        //             if(users.id === user.id ) {
+        //                 return delete user
+        //             } else return productInCart
+        //         });
+        //     }
+
     }
 
 	return (

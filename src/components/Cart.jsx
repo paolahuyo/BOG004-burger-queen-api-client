@@ -13,6 +13,7 @@ const Cart = () => {
 
     /* Traemos del context los productos del carrito */
     const { cartItems, resetCart }  = useContext(CartContext);
+    console.log('cartItems', cartItems);
 
     /* Cada vez que se modifica el carrito, actualizamos la cantidad de productos */
     useEffect(() => {
@@ -23,6 +24,7 @@ const Cart = () => {
 
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
+    console.log("total",total);
     const clientRef = useRef();
     const [values, setValues] = useState({
         clientName: " ",
@@ -98,7 +100,7 @@ const Cart = () => {
             </div>
                 <div className={styles.buttonCart}>
                     <img src={takeAwayOrder} alt="order icon" style={{ width: 80 }} />
-                    <p className={styles.p}># Products: {productsLenght } items</p>
+                    <p className={styles.p}># Products: {productsLenght} items</p>
                 </div>
             </div>
             <div className='container'>
