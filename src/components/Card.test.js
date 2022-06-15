@@ -1,18 +1,11 @@
 import React from 'react';
 import { Router } from 'react-router-dom'
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-<<<<<<< HEAD
 import { CartProvider } from '../Context/CartContext';
-=======
-<<<<<<< HEAD
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-=======
->>>>>>> 3e525248 (Haciendo test de login)
->>>>>>> efaa7766 (Haciendo test de login)
 import { callProducts } from "../api/Products.js";
 import Card from '../components/Card'
 

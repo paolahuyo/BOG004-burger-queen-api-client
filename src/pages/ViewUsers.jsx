@@ -11,12 +11,7 @@ function ViewUsers() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-      getUser()
-      .then((response) =>{
-      console.log(response.data);
-      setUsers(response.data)
-      })
-      .catch(() =>{});
+      getUsers();
     }, []);
 
 
@@ -24,20 +19,22 @@ function ViewUsers() {
 
     }
 
-    const deleteUser = (users) =>{
-        // const viewedUsers = users.find(
-        //     (user) => users.id === user.id
-        // );
-        // if (viewedUsers) {
-        //        return users.filter((user) => user.id !== users.id)
-        // } else {
-        //         return users.map((user) => {
-        //             if(users.id === user.id ) {
-        //                 return delete user
-        //             } else return productInCart
-        //         });
-        //     }
+    const getUsers = () => {
+        getUser()
+        .then((response) =>{
+        console.log(response.data);
+        setUsers(response.data)
+        })
+        .catch(() =>{});
+    }
 
+    const deleteUser = async (id) =>{
+        return await deleteUsers(id)
+        .then((reponse) =>{
+            getUsers();
+            console.log("response", reponse)
+        })
+        .catch((err)=>{console.log(err)})
     }
 
 	return (
@@ -52,8 +49,8 @@ function ViewUsers() {
                     <li className='users-li'> Roles: {Object.keys(user.roles)}</li>
                 </ul>
 
-                <button className="btn btn-sm btn-primary" onClick={()=> editUser(user)}><img src={editIcon} alt="btn edit" style={{width:15, alignSelf:'center'}} /> Edit User</button>
-                <button className="btn btn-sm btn-danger"  onClick={()=> deleteUser(user)}><img src={minusIcons} alt="btn plus" style={{width:15, alignSelf:'center'}} /> Delete User</button>
+                <button className="btn btn-sm btn-primary" onClick={(id)=> editUser(id)}><img src={editIcon} alt="btn edit" style={{width:15, alignSelf:'center'}} /> Edit User</button>
+                <button className="btn btn-sm btn-danger"  onClick={()=> deleteUser(user.id)}><img src={minusIcons} alt="btn plus" style={{width:15, alignSelf:'center'}} /> Delete User</button>
             </div>
             ))}
         </div>

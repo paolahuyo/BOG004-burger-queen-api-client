@@ -10,15 +10,7 @@ const CreateUsers = () => {
   const [values, setValues] = useState({
       email: "",
       password: "",
-<<<<<<< HEAD
       roles: { }
-=======
-      roles:{
-        admin: false,
-        waiter: false,
-        chef: false
-      }
->>>>>>> 4431672c (creando nuevos test)
   });
 
   const submitHandler = async (e) => {
@@ -89,7 +81,6 @@ const CreateUsers = () => {
             id="roles"
             name="roles"
             placeholder="Rol"
-<<<<<<< HEAD
             data-testid="roles-worker"
             value={Object.keys(values.roles)[0]}
             onChange={handleChange}>
@@ -97,24 +88,12 @@ const CreateUsers = () => {
           <option value='admin'>Administrator</option>
           <option value='chef'>Chef</option>
           <option value='waiter'>Waiter</option>
-=======
-            className="roles-worker"
-            data-testid="roles-worker"
-            onChange={handleChange}
-          >
-          <option value="0">Rol</option>
-          <option value={{roles:{admin:true}}}>Administrator</option>
-          <option value={{roles:{chef:true}}}>Chef</option>
-          <option value={{roles:{waiter:true}}}>Waiter</option>
->>>>>>> 4431672c (creando nuevos test)
         </select>
         </div>
           <button type="submit" className={styles.LoginButton}  name="submitRegister">Register</button>
       </form>
       <p className={styles.LoginFormEr} data-testid="login-error-message">{hasError}</p>
-      {/* {hasError} */}
       <p className={styles.LoginFormEr} data-testid="login-error-message">{message}</p>
-      {/* {message} */}
     </div>
   );
 };
