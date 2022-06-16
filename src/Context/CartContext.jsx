@@ -7,8 +7,10 @@ export const addItemToCartTest = (cartItems, product) => {
     (productInCart)=> productInCart.id === product.id
     );
     if(inCart){
+        console.log("inCart")
             return cartItems.map((productInCart)=>{
                 if(productInCart.id === product.id){
+                    console.log("aqui si debe entrar", {...inCart, amount:inCart.amount + 1})
                     return{...inCart, amount:inCart.amount + 1};
                 } else return productInCart;
             })
