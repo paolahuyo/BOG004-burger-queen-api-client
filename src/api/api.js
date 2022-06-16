@@ -21,14 +21,22 @@ const getUser = () => {
 }
 
 const updateUser = (id, update) =>{
+<<<<<<< HEAD
     return axios.patch(BASE_URL+"users/"+id, update,{
         headers:{
             "content-type": "application/json",
             authorization: "Bearer " + getToken()
+=======
+    return axios.patch(BASE_URL+"user/"+id, update,{
+        headers:{
+            "content-type": "application/json",
+            authorization: "Bearer" + getToken()
+>>>>>>> d595d37752fed3610bdb2c7192acc0b129913cd1
         }
     })
 }
 
+<<<<<<< HEAD
 const deleteUsers = (id) =>{
     console.log("el id",id)
     console.log("token", getToken())
@@ -37,6 +45,13 @@ const deleteUsers = (id) =>{
         headers:{
             "content-type": "application/json",
             authorization: "Bearer " + getToken()
+=======
+const deleteUser = (id) =>{
+    return axios.delete(BASE_URL+"user/"+id,{
+        headers:{
+            "content-type": "application/json",
+            authorization: "Bearer" + getToken()
+>>>>>>> d595d37752fed3610bdb2c7192acc0b129913cd1
         }
     })
 }
@@ -69,6 +84,10 @@ const saveProduct = (product) => {
 
 export {
     login,
+<<<<<<< HEAD
+=======
+    getUser,
+>>>>>>> d595d37752fed3610bdb2c7192acc0b129913cd1
     saveUser,
     createUser,
     getLoggedUser,
@@ -77,7 +96,12 @@ export {
     createProduct,
     saveProduct,
     getId,
+<<<<<<< HEAD
     getUser,
     updateUser,
     deleteUsers
+=======
+    updateUser,
+    deleteUser
+>>>>>>> d595d37752fed3610bdb2c7192acc0b129913cd1
 }
