@@ -45,6 +45,7 @@ const CreateUsers = () => {
   }
 
   return (
+    <>
     <div>
       <h3 style={{color:'white', margin:40}}>Admin Panel</h3>
       <form className={styles.LoginForm} style={{height:'auto', alignSelf:'center', marginTop: 100}} onSubmit={submitHandler}>
@@ -95,6 +96,7 @@ const CreateUsers = () => {
       <p className={styles.LoginFormEr} data-testid="login-error-message">{hasError}</p>
       <p className={styles.LoginFormEr} data-testid="login-error-message">{message}</p>
     </div>
+    </>
   );
 };
 
