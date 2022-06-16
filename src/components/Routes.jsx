@@ -9,7 +9,6 @@ import { getLoggedUser } from "../api/api";
 import OrdersReady from "../pages/OrdersReady";
 import OrdersClosed from "../pages/OrdersClosed";
 import OrdersCancelled from "../pages/OrdersCancelled";
-import CreateUsers from "../pages/CreateUsers";
 import ViewUsers from "../pages/ViewUsers"
 
 const router = () => {

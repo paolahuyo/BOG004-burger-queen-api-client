@@ -1,11 +1,11 @@
 import React from 'react';
 import { Router } from 'react-router-dom'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { createMemoryHistory } from 'history';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { CartProvider } from '../Context/CartContext';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { callProducts } from "../api/Products.js";
 import Card from '../components/Card'
 

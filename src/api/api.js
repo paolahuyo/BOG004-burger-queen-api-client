@@ -45,6 +45,7 @@ const saveUser = (user) => {
     sessionStorage.setItem('user', JSON.stringify(user));
 }
 
+
 const getLoggedUser = () => {
     return JSON.parse(sessionStorage.getItem('user'));
 }

@@ -22,18 +22,6 @@ const Cart = () => {
         )
     }, [cartItems]);
 
-    const goToCero = () => {
-        setProductsLength(
-            cartItems.reduce((previous, current) => previous - current.amount, 0)
-        )
-    }
-
-    // useEffect(() => {
-    //     setProductsLength(
-    //         cartItems.reduce((previous, current) => previous - current.amount, 0)
-    //     )
-    // }, [cartItems]);
-
     /* Obtenemos el precio total */
     const total = cartItems.reduce((previous, current) => previous + current.amount * current.price, 0);
     console.log("total",total);

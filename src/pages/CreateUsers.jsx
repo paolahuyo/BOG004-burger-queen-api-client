@@ -93,7 +93,9 @@ const CreateUsers = () => {
           <button type="submit" className={styles.LoginButton}  name="submitRegister">Register</button>
       </form>
       <p className={styles.LoginFormEr} data-testid="login-error-message">{hasError}</p>
+      {/* {hasError} */}
       <p className={styles.LoginFormEr} data-testid="login-error-message">{message}</p>
+      {/* {message} */}
     </div>
   );
 };

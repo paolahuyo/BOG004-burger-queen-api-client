@@ -6,7 +6,7 @@ export default function NotFound() {
     <div className="container">
       <h1>Página de menu</h1>
       <p>
-        <Link to="/">Login</Link>
+        <Link to="/">login</Link>
       </p>
     </div>
   );
