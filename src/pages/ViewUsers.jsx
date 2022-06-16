@@ -36,18 +36,23 @@ function ViewUsers() {
     }, []);
 
 
-    const editUser = async (e) => {
+    const editUser = async (e, id) => {
         e.preventDefault();
-        try {
-          const response = await updateUser(values);
-          const { user } = response.data;
-          getUsers();
-          setMessageModal("Datos actualizados correctamente");
-          console.log(user)
-        } catch (error) {
+          console.log("entro")
+          await updateUser(id, values).then((reponse) =>{
+            console.log(reponse)
+            setValues({
+              email: "",
+              password: "",
+              roles: { }
+            });
+            getUsers();
+            setMessageModal("Datos actualizados correctamente");
+          })
+        .catch((error)  => {
+          console.log("error", error)
           setHasErrorModal("No se ha podido actualizar el usuario");
-          console.error(error);
-        }
+        }) 
       };
     
       const handleChange = (e) => {
@@ -84,7 +89,7 @@ function ViewUsers() {
         <>
         <NavBarAdmin></NavBarAdmin>
         <div className='container d-flex flex-column justify-content-center align-items-center h-100' style={{marginTop:40}}>
-            {users.map((user)=>(
+            {users.map((user, index)=>(
             <div className='' key={user.id}>
                 <ul className=''>
                     <li className='users-li'> Email: {user.email}</li>
@@ -96,13 +101,12 @@ function ViewUsers() {
                 <button className="btn btn-sm btn-danger"  onClick={()=> deleteUser(user.id)}><img src={minusIcons} alt="btn plus" style={{width:15, alignSelf:'center'}} /> Delete User</button>
                 <Modal condition={modalState1} changeStatus={changeStatusModal1}>
                   <div>
-                    <form onSubmit={editUser}>
+                    <form onSubmit={(e) => editUser(e, user.id)}>
                         <h3>Edit user</h3>
                         <div>
                           <label htmlFor="email">Email</label>
                           <input 
                             type="email"
-                            id="email"
                             name="email"
                             placeholder="Email"
                             value={values.email}
@@ -114,7 +118,6 @@ function ViewUsers() {
                           <label htmlFor="pws">Password</label>
                           <input 
                             type="password"
-                            id='password'
                             name='password'
                             placeholder='Password'
                             value={values.password}
@@ -126,7 +129,6 @@ function ViewUsers() {
                           <label>Rol</label>
                           <select 
                             name="roles" 
-                            id="roles"
                             placeholder='Rol'
                             value={Object.keys(values.roles)[0]}
                             onChange={handleChange}
