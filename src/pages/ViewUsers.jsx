@@ -14,7 +14,6 @@ function ViewUsers() {
       getUsers();
     }, []);
 
-
     const editUser = () =>{
 
     }
