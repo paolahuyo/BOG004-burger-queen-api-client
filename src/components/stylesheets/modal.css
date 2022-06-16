@@ -1,0 +1,94 @@
+.Overlay{
+    width: 100vw;
+    height: 110vh;
+    position: fixed;
+    top: -30px;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ContenedorModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 85vw;
+    height: 85vh;
+    min-height: 50px;
+    background: #fff;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.BotonCerrar{
+   position: absolute; 
+   top: 20px;
+   right: 20px;
+   width: 30px;
+   height: 30px;
+   border: none;
+   background: none;
+   cursor: pointer;
+   transition: .3s ease all;
+   border-radius: 5xp;
+}
+   
+
+.BotonCerrar:hover{
+    background: #f2f2f2;
+}
+
+@media screen and (min-width: 801px){
+    .Overlay{
+        width: 100vw;
+        height: 110vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,.5);
+        padding-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    
+    .ContenedorModal{
+        width: 50vw;
+        height: 50vh;
+        top: -30px;
+        min-height: 50px;
+        background: #fff;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+        padding: 10px
+    }
+    
+    .BotonCerrar{
+       position: absolute; 
+       top: 20px;
+       right: 20px;
+       width: 30px;
+       height: 30px;
+       border: none;
+       background: none;
+       cursor: pointer;
+       transition: .3s ease all;
+       border-radius: 5xp;
+    }
+       
+    
+    .BotonCerrar:hover{
+        background: #f2f2f2;
+    }
+    
+}
